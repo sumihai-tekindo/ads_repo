@@ -1,0 +1,820 @@
+<openerp>
+	<data>
+		<!-- Account Chart Template-->
+		<record id="second_company_130000001" model="account.account.template">
+            <field name="code">130000001</field>
+            <field name="name">AYAT SILANG</field>
+            <field name="reconcile" eval="True"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+		<record id="second_company_account_chart_template" model="account.chart.template">
+			<field name="name">Arisma Dinamis Sarana</field>
+			<field name="bank_account_code_prefix">1112</field>
+			<field name="cash_account_code_prefix">1111</field>
+			<field name="code_digits">9</field>
+			<field name="currency_id" ref="base.IDR"/>
+			<field name="transfer_account_id" ref="second_company_130000001"/>
+			<field name="company_id" ref="second_company"/>
+		</record>
+		<record id="second_company_130000001" model="account.account.template">
+			<field name="chart_template_id" ref="second_company_account_chart_template"/>
+		</record>
+
+		<!-- Account Template -->
+
+		<record model='account.account.template' id='second_company_111100001'>
+			<field name='name'>PETTY CASH</field>
+			<field name='code'>111100001</field>
+			<field name='user_type_id' ref='account.data_account_type_liquidity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_111100002'>
+			<field name='name'>CASH</field>
+			<field name='code'>111100002</field>
+			<field name='user_type_id' ref='account.data_account_type_liquidity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_111200001'>
+			<field name='name'>BCA 755-0790-780</field>
+			<field name='code'>111200001</field>
+			<field name='user_type_id' ref='account.data_account_type_liquidity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_111200002'>
+			<field name='name'>BCA </field>
+			<field name='code'>111200002</field>
+			<field name='user_type_id' ref='account.data_account_type_liquidity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_111200003'>
+			<field name='name'>BANK</field>
+			<field name='code'>111200003</field>
+			<field name='user_type_id' ref='account.data_account_type_liquidity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_112000001'>
+			<field name='name'>MERCHANDISE INVENTORY</field>
+			<field name='code'>112000001</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000001'>
+			<field name='name'>AR SALES</field>
+			<field name='code'>113000001</field>
+			<field name='user_type_id' ref='account.data_account_type_receivable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000002'>
+			<field name='name'>AR VAPENAPE</field>
+			<field name='code'>113000002</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000003'>
+			<field name='name'>AR AROMA DINAMIS SARANA (VAPEZOO)</field>
+			<field name='code'>113000003</field>
+			<field name='user_type_id' ref='account.data_account_type_receivable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000004'>
+			<field name='name'>AR AURA DINAMIS SARANA </field>
+			<field name='code'>113000004</field>
+			<field name='user_type_id' ref='account.data_account_type_receivable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000005'>
+			<field name='name'>AR ADS BENGKEL</field>
+			<field name='code'>113000005</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000006'>
+			<field name='name'>AR VAPE NAPE - JIMMY</field>
+			<field name='code'>113000006</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000007'>
+			<field name='name'>AR VOLTRONIC</field>
+			<field name='code'>113000007</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000008'>
+			<field name='name'>AR SHOWROOM</field>
+			<field name='code'>113000008</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_113000009'>
+			<field name='name'>AR OTHER</field>
+			<field name='code'>113000009</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_114000001'>
+			<field name='name'>KONSINYASI</field>
+			<field name='code'>114000001</field>
+			<field name='user_type_id' ref='account.data_account_type_receivable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_114000002'>
+			<field name='name'>PREPAID EXPENSES</field>
+			<field name='code'>114000002</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_114000003'>
+			<field name='name'>DOWN PAYMENT - PURCHASE</field>
+			<field name='code'>114000003</field>
+			<field name='user_type_id' ref='account.data_account_type_prepayments'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_114000004'>
+			<field name='name'>VAT IN (TAX PAID)</field>
+			<field name='code'>114000004</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000001'>
+			<field name='name'>LAND</field>
+			<field name='code'>120000001</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000002'>
+			<field name='name'>BUILDING</field>
+			<field name='code'>120000002</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000003'>
+			<field name='name'>ACC. DEPRECIATION BUILDING</field>
+			<field name='code'>120000003</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000004'>
+			<field name='name'>OFFICE EQUIPMENT</field>
+			<field name='code'>120000004</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000005'>
+			<field name='name'>ACC. DEPRECIATION OFFICE EQUIPMENT</field>
+			<field name='code'>120000005</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000006'>
+			<field name='name'>VEHICLES</field>
+			<field name='code'>120000006</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000007'>
+			<field name='name'>ACC. DEPRECIATION VEHICLES</field>
+			<field name='code'>120000007</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000008'>
+			<field name='name'>FURNITURE</field>
+			<field name='code'>120000008</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000009'>
+			<field name='name'>ACC. DEPRECIATION FURNITURE</field>
+			<field name='code'>120000009</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000010'>
+			<field name='name'>RENOVATION</field>
+			<field name='code'>120000010</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000011'>
+			<field name='name'>ACC. DEPRECIATION RENOVATION</field>
+			<field name='code'>120000011</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000012'>
+			<field name='name'>PROGRAM SOFTWARE</field>
+			<field name='code'>120000012</field>
+			<field name='user_type_id' ref='account.data_account_type_non_current_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_120000013'>
+			<field name='name'>ACC. DEPRECIATION SOFTWARE</field>
+			<field name='code'>120000013</field>
+			<field name='user_type_id' ref='account.data_account_type_fixed_assets'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_130000001'>
+			<field name='name'>AYAT SILANG</field>
+			<field name='code'>130000001</field>
+			<field name='user_type_id' ref='account.data_account_type_current_assets'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_211000001'>
+			<field name='name'>AP SUPPLIER</field>
+			<field name='code'>211000001</field>
+			<field name='user_type_id' ref='account.data_account_type_payable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_212000001'>
+			<field name='name'>AP SHOWROOM</field>
+			<field name='code'>212000001</field>
+			<field name='user_type_id' ref='account.data_account_type_payable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_212000002'>
+			<field name='name'>AP VOLTRONIC</field>
+			<field name='code'>212000002</field>
+			<field name='user_type_id' ref='account.data_account_type_payable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_212000003'>
+			<field name='name'>AP DJUNDI </field>
+			<field name='code'>212000003</field>
+			<field name='user_type_id' ref='account.data_account_type_payable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_212000004'>
+			<field name='name'>AP-JNE</field>
+			<field name='code'>212000004</field>
+			<field name='user_type_id' ref='account.data_account_type_payable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_212000005'>
+			<field name='name'>OTHER PAYABLES</field>
+			<field name='code'>212000005</field>
+			<field name='user_type_id' ref='account.data_account_type_payable'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_212000006'>
+			<field name='name'>VAT OUT (TAX PAID)</field>
+			<field name='code'>212000006</field>
+			<field name='user_type_id' ref='account.data_account_type_current_liabilities'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_213000001'>
+			<field name='name'>HUTANG BANK (LONG TERM PAYABLE)</field>
+			<field name='code'>213000001</field>
+			<field name='user_type_id' ref='account.data_account_type_non_current_liabilities'/>
+			<field name='reconcile' eval='True'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_311000001'>
+			<field name='name'>DIVIDENDS</field>
+			<field name='code'>311000001</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000001'>
+			<field name='name'>EQUITY WINARNO</field>
+			<field name='code'>312000001</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000002'>
+			<field name='name'>EQUITY DJUNDI</field>
+			<field name='code'>312000002</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000003'>
+			<field name='name'>EQUITY RAYMOND</field>
+			<field name='code'>312000003</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000004'>
+			<field name='name'>EQUITY ALDO</field>
+			<field name='code'>312000004</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000005'>
+			<field name='name'>EQUITY HERMAN</field>
+			<field name='code'>312000005</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000006'>
+			<field name='name'>MODAL JIMMY/VAPENAPE</field>
+			<field name='code'>312000006</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000007'>
+			<field name='name'>INVESTOR FUND (DANNY,INDRA,WANDI)</field>
+			<field name='code'>312000007</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_312000008'>
+			<field name='name'>PRIVE  WINARNO</field>
+			<field name='code'>312000008</field>
+			<field name='user_type_id' ref='account.data_account_type_equity'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_411000001'>
+			<field name='name'>SALES ADS (ARISMA DINAMIS SARANA)</field>
+			<field name='code'>411000001</field>
+			<field name='user_type_id' ref='account.data_account_type_revenue'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_411000002'>
+			<field name='name'>SALES RETURN</field>
+			<field name='code'>411000002</field>
+			<field name='user_type_id' ref='account.data_account_type_revenue'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_411000003'>
+			<field name='name'>SALES DISCOUNT</field>
+			<field name='code'>411000003</field>
+			<field name='user_type_id' ref='account.data_account_type_revenue'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_511000001'>
+			<field name='name'>COST OF GOODS SOLD</field>
+			<field name='code'>511000001</field>
+			<field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_512000001'>
+			<field name='name'>SHIPPING</field>
+			<field name='code'>512000001</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_512000002'>
+			<field name='name'>MARKETING EXPENSES</field>
+			<field name='code'>512000002</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_512000003'>
+			<field name='name'>COMMERCIAL/ADVERTISING</field>
+			<field name='code'>512000003</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_512000004'>
+			<field name='name'>COMMISSION</field>
+			<field name='code'>512000004</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_513000001'>
+			<field name='name'>SALARY</field>
+			<field name='code'>513000001</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_513000002'>
+			<field name='name'>ALLOWANCE AND OVERTIME</field>
+			<field name='code'>513000002</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_513000003'>
+			<field name='name'>MEDICAL</field>
+			<field name='code'>513000003</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_513000004'>
+			<field name='name'>JAMSOSTEK / BPJS</field>
+			<field name='code'>513000004</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_513000005'>
+			<field name='name'>THR</field>
+			<field name='code'>513000005</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_513000006'>
+			<field name='name'>BONUS AND INCENTIVE</field>
+			<field name='code'>513000006</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_514000001'>
+			<field name='name'>WATER</field>
+			<field name='code'>514000001</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_514000002'>
+			<field name='name'>ELECTRICITY</field>
+			<field name='code'>514000002</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_514000003'>
+			<field name='name'>TELEPHONE , HP , INTERNET</field>
+			<field name='code'>514000003</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_514000004'>
+			<field name='name'>MAINTENANCE AND REPAIR BUILDING</field>
+			<field name='code'>514000004</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_514000005'>
+			<field name='name'>MAINTENANCE AND REPAIR VEHICLE</field>
+			<field name='code'>514000005</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_514000006'>
+			<field name='name'>MAINTENANCE AND REPAIR EQUIPMENT</field>
+			<field name='code'>514000006</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000001'>
+			<field name='name'>GASOLINE, PARKING AND TOL</field>
+			<field name='code'>515000001</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000002'>
+			<field name='name'>TRANSPORTATION AND BUSINESS TRIP</field>
+			<field name='code'>515000002</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000003'>
+			<field name='name'>STATIONARY AND FOTOCOPY</field>
+			<field name='code'>515000003</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000004'>
+			<field name='name'>BANQUET AND DONATION</field>
+			<field name='code'>515000004</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000005'>
+			<field name='name'>COURIER</field>
+			<field name='code'>515000005</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000006'>
+			<field name='name'>BROCHURE AND PRINTING</field>
+			<field name='code'>515000006</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000007'>
+			<field name='name'>RENT</field>
+			<field name='code'>515000007</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000008'>
+			<field name='name'>ENTERTAINMENT</field>
+			<field name='code'>515000008</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000009'>
+			<field name='name'>PROFESIONAL FEE</field>
+			<field name='code'>515000009</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000010'>
+			<field name='name'>LICENSES, LEGAL AND PERMISSION</field>
+			<field name='code'>515000010</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000011'>
+			<field name='name'>STAMP</field>
+			<field name='code'>515000011</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000012'>
+			<field name='name'>CLEANING SERVICE AND SECURITY</field>
+			<field name='code'>515000012</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000013'>
+			<field name='name'>OFFICE NECESSITY</field>
+			<field name='code'>515000013</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000014'>
+			<field name='name'>RESEARCH AND DEVELOPMENT</field>
+			<field name='code'>515000014</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_515000015'>
+			<field name='name'>OTHER ADMINISTRATION EXPENSES</field>
+			<field name='code'>515000015</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_516000001'>
+			<field name='name'>DEPRECIATION EXPENSES</field>
+			<field name='code'>516000001</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_516000002'>
+			<field name='name'>DEPRECIATION EXP. OFFICE EQUIPMENT</field>
+			<field name='code'>516000002</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_516000003'>
+			<field name='name'>DEPRECIATION EXP. VEHICLE</field>
+			<field name='code'>516000003</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_516000004'>
+			<field name='name'>DEPRECIATION EXP. FURNITURE</field>
+			<field name='code'>516000004</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_516000005'>
+			<field name='name'>DEPRECIATION EXP. RENOVATION</field>
+			<field name='code'>516000005</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_611000001'>
+			<field name='name'>BANK INTEREST INCOME</field>
+			<field name='code'>611000001</field>
+			<field name='user_type_id' ref='account.data_account_type_other_income'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_611000002'>
+			<field name='name'>JNE INCOME</field>
+			<field name='code'>611000002</field>
+			<field name='user_type_id' ref='account.data_account_type_other_income'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_611000003'>
+			<field name='name'>GAIN ON FOREX</field>
+			<field name='code'>611000003</field>
+			<field name='user_type_id' ref='account.data_account_type_other_income'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_611000004'>
+			<field name='name'>GAIN ON SALES/TRADE IN ASSETS</field>
+			<field name='code'>611000004</field>
+			<field name='user_type_id' ref='account.data_account_type_other_income'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_611000005'>
+			<field name='name'>OTHERS INCOME</field>
+			<field name='code'>611000005</field>
+			<field name='user_type_id' ref='account.data_account_type_other_income'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000001'>
+			<field name='name'>BANK CHARGES AND ADMIN</field>
+			<field name='code'>711000001</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000002'>
+			<field name='name'>LOSS ON FOREX</field>
+			<field name='code'>711000002</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000003'>
+			<field name='name'>LOSS ON SALES ASSETS</field>
+			<field name='code'>711000003</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000004'>
+			<field name='name'>CASH OVER</field>
+			<field name='code'>711000004</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000005'>
+			<field name='name'>UNCOLLECTIBLE RECEIVABLES EXP</field>
+			<field name='code'>711000005</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000006'>
+			<field name='name'>BANK INTEREST EXPENSE</field>
+			<field name='code'>711000006</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_711000007'>
+			<field name='name'>OTHERS EXPENSES</field>
+			<field name='code'>711000007</field>
+			<field name='user_type_id' ref='account.data_account_type_expenses'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+		<record model='account.account.template' id='second_company_810000001'>
+			<field name='name'>Current Year Earning</field>
+			<field name='code'>810000001</field>
+			<field name='user_type_id' ref='account.data_unaffected_earnings'/>
+			<field name='reconcile' eval='False'/>
+			<field name='chart_template_id' ref='second_company_account_chart_template'/>
+		</record>
+
+
+
+        <!-- Account Tax Template -->
+
+        <record id="second_company_vatin_10e" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] VAT IN 10% [Exc]</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">10</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="account_id" ref="second_company_114000004"/>
+            <field name="refund_account_id" ref="second_company_114000004"/>
+            <field name="price_include" eval="False"/>
+            <field name="description">VATIN EXCL(10%)</field>
+        </record>
+
+        <record id="second_company_vatin_10i" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] VAT IN 10% [Inc]</field>
+            <field name="amount">10</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="account_id" ref="second_company_114000004"/>
+            <field name="refund_account_id" ref="second_company_114000004"/>
+            <field name="price_include" eval="True"/>
+            <field name="description">VATIN INCL(10%)</field>
+        </record>
+
+        <record id="second_company_vatout_10e" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] VAT OUT 10% [Exc]</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">10</field>
+            <field name="type_tax_use">sale</field>
+            <field name="price_include" eval="False"/>
+            <field name="description">VATOUT EXCL(10%)</field>
+        </record>
+
+        <record id="second_company_vatout_10i" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] VAT OUT 10% [Inc]</field>
+            <field name="amount">10</field>
+            <field name="type_tax_use">sale</field>
+            <field name="price_include" eval="True"/>
+            <field name="description">VATOUT INCL(10%)</field>
+        </record>
+
+        <record id="second_company_wht_21" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] PPH 21</field>
+            <field name="amount">2</field>
+            <field name="type_tax_use">none</field>
+            <field name="price_include" eval="True"/>
+            <field name="description">PPH 21 (2%)</field>
+        </record>
+
+        <record id="second_company_wht_25" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] PPH 25</field>
+            <field name="amount">25</field>
+            <field name="type_tax_use">none</field>
+            <field name="price_include" eval="False"/>
+            <field name="description">PPH 25</field>
+        </record>
+        <record id="second_company_wht_4art2" model="account.tax.template">
+            <field name="chart_template_id" ref="second_company_account_chart_template"/>
+            <field name="name">[ARI] PPH 4 Art 2</field>
+            <field name="amount">1</field>
+            <field name="type_tax_use">none</field>
+            <field name="price_include" eval="False"/>
+            <field name="description">PPH 4 Art 2</field>
+        </record>
+
+	</data>
+</openerp>

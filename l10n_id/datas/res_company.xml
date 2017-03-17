@@ -1,0 +1,83 @@
+<openerp>
+	<data noupdate="1">
+		<!-- Basic Currency -->
+		<record id="base.IDR" model="res.currency">
+            <field name="name">IDR</field>
+            <field name="symbol">Rp</field>
+            <field name="rounding">0.01</field>
+            <field name="active" eval="True"/>
+        </record>
+
+		<!-- Basic Partner -->
+		<record id="base.main_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="name">Aroma Dinamis Sarana</field>
+            <field name="company_id" eval="None"/>
+            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+            <field name="customer" eval="False"/>
+            <field name="is_company" eval="True"/>
+            <field name="street">Jl. Panjang No. 71 Kebon Jeruk</field>
+            <field name="city">Jakarta Barat</field>
+            <field name="zip"></field>
+            <field name="phone"></field>
+            <field name="email">info@yourcompany.com</field>
+            <field name="website">www.yourcompany.com</field>
+        </record>
+        <record id="second_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="name">Arisma Dinamis Sarana</field>
+            <field name="company_id" eval="None"/>
+            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+            <field name="customer" eval="False"/>
+            <field name="is_company" eval="True"/>
+            <field name="street">Jl. Panjang No. 71 Kebon Jeruk</field>
+            <field name="city">Jakarta Barat</field>
+            <field name="zip"></field>
+            <field name="phone"></field>
+            <field name="email">info@yourcompany.com</field>
+            <field name="website">www.yourcompany.com</field>
+        </record>
+        <record id="third_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="name">Aura Dinamis Sarana</field>
+            <field name="company_id" eval="None"/>
+            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+            <field name="customer" eval="False"/>
+            <field name="is_company" eval="True"/>
+            <field name="street">Jl. Panjang No. 71 Kebon Jeruk</field>
+            <field name="city">Jakarta Barat</field>
+            <field name="zip"></field>
+            <field name="phone"></field>
+            <field name="email">info@yourcompany.com</field>
+            <field name="website">www.yourcompany.com</field>
+        </record>
+
+		<!-- Basic Company  -->
+		<record id="base.main_company" model="res.company">
+			<field name="name">Aroma Dinamis Sarana</field>
+			<field name="partner_id" ref="base.main_partner"/>
+			<field name="rml_header1">My Company Tagline</field>
+			<field name="currency_id" ref="base.IDR"/>
+		</record>
+
+		<record id="second_company" model="res.company">
+			<field name="name">Arisma Dinamis Sarana</field>
+			<field name="partner_id" ref="second_partner"/>
+			<field name="rml_header1">My Company Tagline</field>
+			<field name="currency_id" ref="base.IDR"/>
+		</record>
+		<record id="third_company" model="res.company">
+			<field name="name">Aura Dinamis Sarana</field>
+			<field name="partner_id" ref="third_partner"/>
+			<field name="rml_header1">My Company Tagline</field>
+			<field name="currency_id" ref="base.IDR"/>
+		</record>
+
+		<record model="res.users" id="base.user_root">
+			<field name="partner_id" ref="base.partner_root"/>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="groups_id" eval="[(4,ref('base.group_multi_company'))]"/>
+			<field name="company_ids" eval="[(6,0,[ref('base.main_company'),ref('second_company'),ref('third_company')])]"/>
+			<field name="signature"><![CDATA[<span>--<br/>
+Administrator</span>]]></field>
+		</record>
+		
+	</data>
+</openerp>

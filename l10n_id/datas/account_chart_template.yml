@@ -1,0 +1,42 @@
+-
+  !python {model: account.chart.template, id: main_company_account_chart_template}: |
+    if not self.company_id.chart_template_id:
+      wizard = self.env['wizard.multi.charts.accounts'].create({
+          'company_id': self.company_id.id,
+          'chart_template_id': self.id,
+          'code_digits': self.code_digits,
+          'transfer_account_id': self.transfer_account_id.id,
+          'currency_id': self.currency_id.id,
+          'bank_account_code_prefix': self.bank_account_code_prefix,
+          'cash_account_code_prefix': self.cash_account_code_prefix,
+      })
+      wizard.onchange_chart_template_id()
+      wizard.execute()
+-
+  !python {model: account.chart.template, id: second_company_account_chart_template}: |
+    if not self.company_id.chart_template_id:
+      wizard = self.env['wizard.multi.charts.accounts'].create({
+          'company_id': self.company_id.id,
+          'chart_template_id': self.id,
+          'code_digits': self.code_digits,
+          'transfer_account_id': self.transfer_account_id.id,
+          'currency_id': self.currency_id.id,
+          'bank_account_code_prefix': self.bank_account_code_prefix,
+          'cash_account_code_prefix': self.cash_account_code_prefix,
+      })
+      wizard.onchange_chart_template_id()
+      wizard.execute()
+-
+  !python {model: account.chart.template, id: third_company_account_chart_template}: |
+    if not self.company_id.chart_template_id:
+      wizard = self.env['wizard.multi.charts.accounts'].create({
+          'company_id': self.company_id.id,
+          'chart_template_id': self.id,
+          'code_digits': self.code_digits,
+          'transfer_account_id': self.transfer_account_id.id,
+          'currency_id': self.currency_id.id,
+          'bank_account_code_prefix': self.bank_account_code_prefix,
+          'cash_account_code_prefix': self.cash_account_code_prefix,
+      })
+      wizard.onchange_chart_template_id()
+      wizard.execute()
