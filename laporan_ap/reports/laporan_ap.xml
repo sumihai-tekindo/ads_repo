@@ -1,0 +1,41 @@
+<openerp>
+	<data>
+		<record id="action_laporan_ap_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan AP</field>
+			<field name="model">stock.invoice</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">laporan.ap.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		
+		<record id="action_summary_ap_xls" model="ir.actions.report.xml">
+			<field name="name">Summary AP</field>
+			<field name="model">stock.invoice</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">summary.ap.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+	</data>
+	
+	<data>
+		<record id="action_laporan_ar_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan AR</field>
+			<field name="model">stock.invoice</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">laporan.ar.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		
+		<record id="action_summary_ar_xls" model="ir.actions.report.xml">
+			<field name="name">Summary AR</field>
+			<field name="model">stock.invoice</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">summary.ar.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+	</data>
+</openerp>
