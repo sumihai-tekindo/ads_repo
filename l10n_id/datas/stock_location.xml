@@ -1,0 +1,209 @@
+<openerp>
+	<data>
+		<!-- ARO main company -->
+		<record id="stock.stock_location_scrapped" model="stock.location">
+            <field name="name">ARO Scrapped</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="scrap_location">True</field>
+            <field name="usage">inventory</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="stock.location_inventory" model="stock.location">
+            <field name="name">ARO Inventory loss</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">inventory</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="stock.location_procurement" model="stock.location">
+            <field name="name">ARO Procurements</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">procurement</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="stock.location_production" model="stock.location">
+            <field name="name">ARO Production</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">production</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="stock.stock_location_suppliers" model="stock.location">
+            <field name="name">ARO Vendors</field>
+            <field name="location_id" ref="stock.stock_location_locations_partner"/>
+            <field name="usage">supplier</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="stock.stock_location_customers" model="stock.location">
+            <field name="name">ARO Customers</field>
+            <field name="location_id" ref="stock.stock_location_locations_partner"/>
+            <field name="usage">customer</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        
+        <record id="stock.stock_location_inter_wh" model="stock.location">
+            <field name="name">ARO Inter Company Transit</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">transit</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+
+        
+
+        <!-- ARI second company -->
+		<record id="second_stock_location_scrapped" model="stock.location">
+            <field name="name">ARI Scrapped</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="scrap_location">True</field>
+            <field name="usage">inventory</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+
+        <record id="second_location_inventory" model="stock.location">
+            <field name="name">ARI Inventory loss</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">inventory</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record id="second_location_procurement" model="stock.location">
+            <field name="name">ARI Procurements</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">procurement</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record id="second_location_production" model="stock.location">
+            <field name="name">ARI Production</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">production</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record id="second_stock_location_suppliers" model="stock.location">
+            <field name="name">ARI Vendors</field>
+            <field name="location_id" ref="stock.stock_location_locations_partner"/>
+            <field name="usage">supplier</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record id="second_stock_location_customers" model="stock.location">
+            <field name="name">ARI Customers</field>
+            <field name="location_id" ref="stock.stock_location_locations_partner"/>
+            <field name="usage">customer</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        
+        <record id="second_stock_location_inter_wh" model="stock.location">
+            <field name="name">ARI Inter Company Transit</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">transit</field>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+
+        <record forcecreate="True" id="second_property_stock_supplier" model="ir.property">
+            <field name="name">property_stock_supplier</field>
+            <field name="fields_id" search="[('model','=','res.partner'),('name','=','property_stock_supplier')]"/>
+            <field eval="'stock.location,'+str(second_stock_location_suppliers)" name="value"/>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record forcecreate="True" id="second_property_stock_customer" model="ir.property">
+            <field name="name">property_stock_customer</field>
+            <field name="fields_id" search="[('model','=','res.partner'),('name','=','property_stock_customer')]"/>
+            <field eval="'stock.location,'+str(second_stock_location_customers)" name="value"/>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record forcecreate="True" id="second_property_stock_procurement" model="ir.property">
+            <field name="name">property_stock_procurement</field>
+            <field name="fields_id" search="[('model','=','product.template'),('name','=','property_stock_procurement')]"/>
+            <field eval="'stock.location,'+str(second_location_procurement)" name="value"/>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record forcecreate="True" id="second_property_stock_inventory" model="ir.property">
+            <field name="name">property_stock_inventory</field>
+            <field name="fields_id" search="[('model','=','product.template'),('name','=','property_stock_inventory')]"/>
+            <field eval="'stock.location,'+str(second_location_inventory)" name="value"/>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+        <record forcecreate="True" id="second_property_stock_production" model="ir.property">
+            <field name="name">property_stock_production</field>
+            <field name="fields_id" search="[('model','=','product.template'),('name','=','property_stock_production')]"/>
+            <field eval="'stock.location,'+str(second_location_production)" name="value"/>
+            <field name="company_id" ref="l10n_id.second_company"/>
+        </record>
+
+        <!-- AUR third company -->
+		<record id="third_stock_location_scrapped" model="stock.location">
+            <field name="name">AUR Scrapped</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="scrap_location">True</field>
+            <field name="usage">inventory</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <record id="third_location_inventory" model="stock.location">
+            <field name="name">AUR Inventory loss</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">inventory</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="third_location_procurement" model="stock.location">
+            <field name="name">AUR Procurements</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">procurement</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="third_location_production" model="stock.location">
+            <field name="name">AUR Production</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">production</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="third_stock_location_suppliers" model="stock.location">
+            <field name="name">AUR Vendors</field>
+            <field name="location_id" ref="stock.stock_location_locations_partner"/>
+            <field name="usage">supplier</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="third_stock_location_customers" model="stock.location">
+            <field name="name">AUR Customers</field>
+            <field name="location_id" ref="stock.stock_location_locations_partner"/>
+            <field name="usage">customer</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        
+        <record id="third_stock_location_inter_wh" model="stock.location">
+            <field name="name">AUR Inter Company Transit</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">transit</field>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        
+        <record forcecreate="True" id="third_property_stock_supplier" model="ir.property">
+            <field name="name">property_stock_supplier</field>
+            <field name="fields_id" search="[('model','=','res.partner'),('name','=','property_stock_supplier')]"/>
+            <field eval="'stock.location,'+str(third_stock_location_suppliers)" name="value"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record forcecreate="True" id="third_property_stock_customer" model="ir.property">
+            <field name="name">property_stock_customer</field>
+            <field name="fields_id" search="[('model','=','res.partner'),('name','=','property_stock_customer')]"/>
+            <field eval="'stock.location,'+str(third_stock_location_customers)" name="value"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record forcecreate="True" id="third_property_stock_procurement" model="ir.property">
+            <field name="name">property_stock_procurement</field>
+            <field name="fields_id" search="[('model','=','product.template'),('name','=','property_stock_procurement')]"/>
+            <field eval="'stock.location,'+str(third_location_procurement)" name="value"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record forcecreate="True" id="third_property_stock_inventory" model="ir.property">
+            <field name="name">property_stock_inventory</field>
+            <field name="fields_id" search="[('model','=','product.template'),('name','=','property_stock_inventory')]"/>
+            <field eval="'stock.location,'+str(third_location_inventory)" name="value"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record forcecreate="True" id="third_property_stock_production" model="ir.property">
+            <field name="name">property_stock_production</field>
+            <field name="fields_id" search="[('model','=','product.template'),('name','=','property_stock_production')]"/>
+            <field eval="'stock.location,'+str(third_location_production)" name="value"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+	</data>
+</openerp>

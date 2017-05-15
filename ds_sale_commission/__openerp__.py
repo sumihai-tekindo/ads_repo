@@ -7,23 +7,18 @@
 ##############################################################################
 
 {
-	'name': 'COA - ADS',
+	'name': 'Sales Commission ADS',
 	'version': '1.0',
 	'category': 'Localization',
-	'summary': 'Chart of Account for ADS',
+	'summary': 'Sales Commission for ADS',
 	'description': """
-    This module add chart of account for PT.ADS with MultiCompany
+    This module compute sales commission for ADS
 """,
 	'website': 'http://dedisinaga.blogspot.com',
-	'depends': ['base','account','stock'],
+	'depends': ['base','account','sale'],
 	'data': [
-		'datas/res_company.xml',
-		'datas/warehouses.xml',
-		'datas/stock_location.xml',
-		'datas/account_chart_template_aroma.xml',
-		'datas/account_chart_template_arisma.xml',
-		'datas/account_chart_template_aura.xml',
-		'datas/account_chart_template.yml'
+		'views/commission_rule_view.xml',
+		'views/commission_compute.xml',
 	],
 	'installable': True,
 	'auto_install': False,

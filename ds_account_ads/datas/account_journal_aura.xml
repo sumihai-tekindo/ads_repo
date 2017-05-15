@@ -1,0 +1,136 @@
+<openerp>
+	<data noupdate="1">
+		<!-- Customer Invoice & Refund -->
+		<record id="aur_cust_inv" model="account.journal">
+            <field name="name">AUR - Customer Invoices</field>
+            <field name="code">AURCINV</field>
+            <field name="type">sale</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_411000001"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_411000001"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_cust_invoice"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <record id="aur_cust_inv_refund" model="account.journal">
+            <field name="name">AUR - Customer Invoices Refund</field>
+            <field name="code">AURCINV-R</field>
+            <field name="type">sale</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_411000002"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_411000002"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_cust_invoice_refund"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <!-- Supplier Invoice & Refund -->
+
+        <record id="aur_supp_inv" model="account.journal">
+            <field name="name">AUR - Supplier Invoices</field>
+            <field name="code">AURSINV</field>
+            <field name="type">purchase</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_515000015"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_515000015"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_supp_invoice"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <record id="aur_supp_inv_refund" model="account.journal">
+            <field name="name">AUR - Supplier Invoices Refund</field>
+            <field name="code">AURSINV-R</field>
+            <field name="type">purchase</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_515000015"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_515000015"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_supp_invoice_refund"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <!-- Asset Depreciation -->
+
+        <record id="aur_asset_depreciation_journal" model="account.journal">
+            <field name="name">AUR - Asset Depreciation</field>
+            <field name="code">AURAST</field>
+            <field name="type">general</field>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_asset_depreciation"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <!-- Bank & Cash -->
+
+        <record id="aur_bank_journal_1" model="account.journal">
+            <field name="name">AUR - Bank1</field>
+            <field name="code">AURBNK1</field>
+            <field name="type">bank</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_111200001"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_111200001"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_bank_1"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="aur_bank_journal_2" model="account.journal">
+            <field name="name">AUR - Bank2</field>
+            <field name="code">AURBNK2</field>
+            <field name="type">bank</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_111200002"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_111200002"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_bank_2"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="aur_bank_journal_3" model="account.journal">
+            <field name="name">AUR - Bank3</field>
+            <field name="code">AURBNK3</field>
+            <field name="type">bank</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_111200003"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_111200003"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_bank_3"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="aur_cash_journal_1" model="account.journal">
+            <field name="name">AUR - Petty Cash</field>
+            <field name="code">AURCSH1</field>
+            <field name="type">cash</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_111100001"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_111100001"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_cash_1"/>
+            <field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+        <record id="aur_cash_journal_2" model="account.journal">
+            <field name="name">AUR - Cash 1</field>
+            <field name="code">AURCSH1</field>
+            <field name="type">cash</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_111100002"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_111100002"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_cash_2"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <!-- Forex Gain Loss -->
+        <record id="aur_fgl_journal" model="account.journal">
+            <field name="name">AUR - Exchange Gain Loss</field>
+            <field name="code">AURFGL</field>
+            <field name="type">general</field>
+            <field name="default_credit_account_id" ref="l10n_id.third_company_611000003"/>
+            <field name="default_debit_account_id" ref="l10n_id.third_company_711000002"/>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_forex_gl"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+
+        <!-- Stock Journal -->
+        <record id="aur_stock_journal" model="account.journal">
+            <field name="name">AUR - Stock Journal</field>
+            <field name="code">AURSTOCK</field>
+            <field name="type">general</field>
+            <field name="refund_sequence" eval="True"/>
+            <field name="sequence_id" ref="aur_stock_journal_seq"/>
+        	<field name="company_id" ref="l10n_id.third_company"/>
+        </record>
+	</data>
+</openerp>

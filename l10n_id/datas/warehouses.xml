@@ -1,0 +1,24 @@
+<odoo>
+	<data>
+		<record id="stock.warehouse0" model="stock.warehouse">
+            <field name="company_id" ref="base.main_company"/>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="code">ARO</field>
+            <field name="name">WH-ARO</field>
+        </record>
+
+        <record id="wh_second_company" model="stock.warehouse">
+            <field name="company_id" ref="l10n_id.second_company"/>
+            <field name="partner_id" ref="l10n_id.second_partner"/>
+            <field name="code">ARI</field>
+            <field name="name">WH-ARI</field>
+        </record>
+
+        <record id="wh_third_company" model="stock.warehouse">
+            <field name="company_id" ref="l10n_id.third_company"/>
+            <field name="partner_id" ref="l10n_id.third_partner"/>
+            <field name="code">AUR</field>
+            <field name="name">WH-AUR</field>
+        </record>
+	</data>
+</odoo>

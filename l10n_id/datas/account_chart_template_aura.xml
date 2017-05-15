@@ -365,7 +365,7 @@
 			<field name="chart_template_id" ref="third_company_account_chart_template"/>
 		</record>
 		<record model="account.account.template" id="third_company_411000001">
-			<field name="name">SALES ADS (ARISMA DINAMIS SARANA)</field>
+			<field name="name">SALES ADS (AURA DINAMIS SARANA)</field>
 			<field name="code">411000001</field>
 			<field name="user_type_id" ref="account.data_account_type_revenue"/>
 			<field name="reconcile" eval="False"/>

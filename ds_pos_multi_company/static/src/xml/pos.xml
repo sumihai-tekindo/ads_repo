@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve"> 
+
+	<t t-extend="ProductCategoriesWidget" name="ProductMultiCompany">
+		<t t-jquery="header.rightpane-header" t-operation="before">
+			<div class="product-multi-loc">
+				<table class="extra_info">
+					<tr>
+		            	<td>
+		                	<span class='label label_special'>Analytic Account</span>
+		                </td>
+		            	<td>
+			                <select class='detail company_select analytic_id' name='analytic_id'>
+			                    <option value=''>None</option>
+			                    <t t-foreach='widget.pos.analytic_account_ids' t-as='analytic_id'>
+		                                <option t-att-value='analytic_id.id'> 
+		                                    <t t-esc='analytic_id.name'/>
+		                                </option>
+		                            </t>
+			                </select>
+		            	</td>
+		            	<td>
+		                	<span class='label label_special'>Sales</span>
+		                </td>
+		                <td>
+			                <select class='detail company_select salesman' name='company_ids'>
+			                    <option value=''>-</option>
+			                    <t t-foreach='widget.pos.sales_ids' t-as='sales'>
+		                                <option t-att-value='sales.id'> 
+		                                    <t t-esc='sales.name'/>
+		                                </option>
+		                            </t>
+			                </select>
+	                	</td>
+		            </tr>
+		            <tr>
+		            	<td colspan="6"><br/></td>
+		            </tr>
+		            <tr>
+						<td>
+		                	<span class='label label_special'>OL Shop Transaction Code</span>
+		                </td>
+		                <td>
+		               		<input style="width:300px;" class="transcode" placeholder="TRX123456789" />
+		            	</td>
+						<td>
+		                	<span class='label label_special'>Company</span>
+		                </td>
+		                <td>
+			                <select class='detail company_select company_id' name='company_ids'>
+			                    <option value=''>-</option>
+			                    <t t-foreach='widget.pos.company_ids' t-as='company'>
+		                                <option t-att-value='company.id'> 
+		                                    <t t-esc='company.name'/>
+		                                </option>
+		                            </t>
+			                </select>
+	                	</td>
+
+		            </tr>
+		        </table>
+			</div>		
+		</t>
+	</t>
+	<t t-extend="Product" name="ProductStockWidget">
+		<t t-jquery="div.product-name" t-operation="replace">
+			<div class="product-name">
+                <t t-esc="product.display_name"/><br/>
+                <t t-esc="product.susbtitute_qty"/>
+            </div>
+		</t>
+	</t>
+</templates>
+
+	
+	

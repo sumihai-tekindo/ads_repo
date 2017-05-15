@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets" inherit_id='point_of_sale.assets' name="Stock Index">&lt;!DOCTYPE html&gt;
+        <xpath expr="//link[@id='pos-stylesheet']" position="after">
+            <link rel="stylesheet" href="/ds_pos_discount_amount/static/src/css/style.css"/>
+        </xpath>
+    </template>
+    <template id="pos_disc_amount_extend" name="pos_disc_amount_extend" inherit_id="ds_pos_multi_company.pos_stock_extend_2">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/ds_pos_discount_amount/static/src/js/pos_model.js"></script>
+			<script type="text/javascript" src="/ds_pos_discount_amount/static/src/js/pos_screen.js"></script>
+			
+		</xpath>
+	</template> 
+</odoo>

@@ -1,0 +1,36 @@
+<openerp>
+	<data>
+		<template id="pos_stock_extend_2" name="pos_stock" inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<!-- <script type="text/javascript" src="/ds_pos_multi_location/static/src/js/pos_db.js"></script> -->
+				<script type="text/javascript" src="/ds_pos_multi_company/static/src/js/pos_model.js"></script>
+				<script type="text/javascript" src="/ds_pos_multi_company/static/src/js/pos_screen.js"></script>
+				
+			</xpath>
+		</template>
+
+		<record id="pos_config_multiwarehouse" model="ir.ui.view">
+			<field name="name">pos.config.multiwarehouse</field>
+			<field name="model">pos.config</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_config_form" />
+			<field name="arch" type="xml">
+				<field name="sequence_id" position="after">
+					<field name="return_sequence_id"/>
+				</field>
+				<xpath expr="/form/sheet/group[@name='receipt']" position="after">
+					<group name="companies">
+						<group name="com1" string="Companies">
+							<field name="company_ids" nolabel="1"/>
+						</group>
+						<group name="com2" string="Analytic Accounts">
+							<field name="account_analytic_ids" domain="[('company_id','in',company_ids[0][2]),('account_type','=','normal')]" nolabel="1"/>
+						</group>
+						<group name="com3" string="Salesman">
+							<field name="sales_ids" domain="[('company_id','=',company_id)]" nolabel="1"/>
+						</group>
+					</group>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

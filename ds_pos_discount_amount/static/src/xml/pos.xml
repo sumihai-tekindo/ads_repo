@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve"> 
+	<t t-extend="Orderline" name="OrderlineDiscAmount">
+		<t t-jquery="ul.info-list&gt;t:nth-child(2)" t-operation="after">
+			<t t-if="line.get_discount_amt_str() !== '0'">
+				<li class="info">
+					With discount : 
+					<em>
+						 <t t-esc="line.get_discount_amt_str()"/>
+					</em>
+				</li>
+			</t>
+		</t>
+	</t>
+
+	<t t-extend="NumpadWidget" name="NumpadWidgetExtend">
+		<t t-jquery="button.numpad-backspace" t-operation="after">
+			<br/>
+			<button class="mode-button numpad-disc-amt" data-mode='discount_amt'>Spec. Disc Amount</button>
+		</t>
+	</t>
+		
+</templates>

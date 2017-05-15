@@ -13,7 +13,8 @@
             <field name="name">Aroma Dinamis Sarana</field>
             <field name="company_id" eval="None"/>
             <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-            <field name="customer" eval="False"/>
+            <field name="customer" eval="True"/>
+            <field name="supplier" eval="True"/>
             <field name="is_company" eval="True"/>
             <field name="street">Jl. Panjang No. 71 Kebon Jeruk</field>
             <field name="city">Jakarta Barat</field>
@@ -26,7 +27,8 @@
             <field name="name">Arisma Dinamis Sarana</field>
             <field name="company_id" eval="None"/>
             <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-            <field name="customer" eval="False"/>
+            <field name="customer" eval="True"/>
+            <field name="supplier" eval="True"/>
             <field name="is_company" eval="True"/>
             <field name="street">Jl. Panjang No. 71 Kebon Jeruk</field>
             <field name="city">Jakarta Barat</field>
@@ -39,7 +41,8 @@
             <field name="name">Aura Dinamis Sarana</field>
             <field name="company_id" eval="None"/>
             <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-            <field name="customer" eval="False"/>
+            <field name="customer" eval="True"/>
+            <field name="supplier" eval="True"/>
             <field name="is_company" eval="True"/>
             <field name="street">Jl. Panjang No. 71 Kebon Jeruk</field>
             <field name="city">Jakarta Barat</field>

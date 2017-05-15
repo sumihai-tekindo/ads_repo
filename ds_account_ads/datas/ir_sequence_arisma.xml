@@ -1,0 +1,116 @@
+<openerp>
+	<data noupdate="1">
+		<!-- Customer Invoice & Refund -->
+
+		<record id="ari_cust_invoice" model="ir.sequence">
+			<field name="name">ARI - Customer Invoice</field>
+			<field name="code">ari.customer.invoice</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/CINV/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<record id="ari_cust_invoice_refund" model="ir.sequence">
+			<field name="name">ARI - Customer Invoice Refund</field>
+			<field name="code">ari.customer.invoice.refund</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/CINVR/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Supplier Invoice & Refund -->
+
+		<record id="ari_supp_invoice" model="ir.sequence">
+			<field name="name">ARI - Supplier Invoice</field>
+			<field name="code">ari.supplier.invoice</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/SINV/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<record id="ari_supp_invoice_refund" model="ir.sequence">
+			<field name="name">ARI - Supplier Invoice Refund</field>
+			<field name="code">ari.supplier.invoice.refund</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/SINVR/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Asset -->
+
+		<record id="ari_asset_depreciation" model="ir.sequence">
+			<field name="name">ARI - Asset Depreciation</field>
+			<field name="code">ari.asset.depreciation</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/AST/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Bank & Cash -->
+		<record id="ari_bank_1" model="ir.sequence">
+			<field name="name">ARI - Bank BCA 755-0790-780</field>
+			<field name="code">ari.bank.one</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/BNK1/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="ari_bank_2" model="ir.sequence">
+			<field name="name">ARI - Bank BCA 2</field>
+			<field name="code">ari.bank.two</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/BNK2/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="ari_bank_3" model="ir.sequence">
+			<field name="name">ARI - Bank 3</field>
+			<field name="code">ari.bank.three</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/BNK3/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="ari_cash_1" model="ir.sequence">
+			<field name="name">ARI - Petty Cash</field>
+			<field name="code">ari.cash.one</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/CSH1/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="ari_cash_2" model="ir.sequence">
+			<field name="name">ARI - Cash</field>
+			<field name="code">ari.cash.two</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/CSH2/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Exchange Currency -->
+		<record id="ari_forex_gl" model="ir.sequence">
+			<field name="name">ARI - Forex GL</field>
+			<field name="code">ari.forex.gl</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/FGL/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Stock Journal -->
+		<record id="ari_stock_journal_seq" model="ir.sequence">
+			<field name="name">ARI - Stock Journal</field>
+			<field name="code">ari.stock</field>
+			<field name="company_id" ref="l10n_id.second_company"/>
+			<field name="prefix">ARI/STJ/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+	</data>
+</openerp>

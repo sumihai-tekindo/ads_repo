@@ -1,0 +1,18 @@
+<openerp>
+	<data>
+		<record id="pos_order_trans_code_inherit" model="ir.ui.view">
+			<field name="name">pos.order.trans.code.inherit</field>
+			<field name="model">pos.order</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+			<field name="arch" type="xml">
+				<field name="fiscal_position_id" position="after">
+					<field name="online_shop_trans_code"/>
+					<field name="analytic_account_id"/>
+				</field>
+				<field name="user_id" position="after">
+					<field name="pos_admin"/>
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>

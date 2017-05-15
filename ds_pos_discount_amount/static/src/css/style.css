@@ -1,0 +1,17 @@
+.pos .actionpad .button.pay {
+    height: 216px !important;
+}
+.numpad-disc-amt  {
+    float: left;
+    height: 54px;
+    width: 216px !important;
+    font-weight: bold;
+    vertical-align: middle;
+    color: #555555;
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #bfbfbf;
+    transition: all 150ms linear;
+}

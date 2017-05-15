@@ -1,0 +1,15 @@
+<openerp>
+	<data>
+		<record id="account_invoice_discount_amount_inherit" model="ir.ui.view">
+			<field name="name">account.invoice.discount.amount.inherit</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_form" />
+			<field name="priority" eval="32"/>
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/notebook/page[1]/field[@name='invoice_line_ids']/tree/field[@name='discount']" position="after">
+					<field name="discount_amount"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

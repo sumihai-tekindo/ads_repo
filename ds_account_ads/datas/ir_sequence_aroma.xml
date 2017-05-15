@@ -1,0 +1,116 @@
+<openerp>
+	<data noupdate="1">
+		<!-- Customer Invoice & Refund -->
+
+		<record id="aro_cust_invoice" model="ir.sequence">
+			<field name="name">ARO - Customer Invoice</field>
+			<field name="code">aro.customer.invoice</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/CINV/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<record id="aro_cust_invoice_refund" model="ir.sequence">
+			<field name="name">ARO - Customer Invoice Refund</field>
+			<field name="code">aro.customer.invoice.refund</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/CINVR/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Supplier Invoice & Refund -->
+
+		<record id="aro_supp_invoice" model="ir.sequence">
+			<field name="name">ARO - Supplier Invoice</field>
+			<field name="code">aro.supplier.invoice</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/SINV/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<record id="aro_supp_invoice_refund" model="ir.sequence">
+			<field name="name">ARO - Supplier Invoice Refund</field>
+			<field name="code">aro.supplier.invoice.refund</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/SINVR/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Asset -->
+
+		<record id="aro_asset_depreciation" model="ir.sequence">
+			<field name="name">ARO - Asset Depreciation</field>
+			<field name="code">aro.asset.depreciation</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/AST/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Bank & Cash -->
+		<record id="aro_bank_1" model="ir.sequence">
+			<field name="name">ARO - Bank BCA 7550-160-573</field>
+			<field name="code">aro.bank.one</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/BNK1/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="aro_bank_2" model="ir.sequence">
+			<field name="name">ARO - Bank BCA 7550-193-111</field>
+			<field name="code">aro.bank.two</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/BNK2/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="aro_bank_3" model="ir.sequence">
+			<field name="name">ARO - Bank MAYBANK 277.900.2199</field>
+			<field name="code">aro.bank.three</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/BNK3/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="aro_cash_1" model="ir.sequence">
+			<field name="name">ARO - Petty Cash</field>
+			<field name="code">aro.cash.one</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/CSH1/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+		<record id="aro_cash_2" model="ir.sequence">
+			<field name="name">ARO - Cash</field>
+			<field name="code">aro.cash.two</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/CSH2/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Exchange Currency -->
+		<record id="aro_forex_gl" model="ir.sequence">
+			<field name="name">ARO - Forex GL</field>
+			<field name="code">aro.forex.gl</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/FGL/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+
+		<!-- Stock Journal -->
+		<record id="aro_stock_journal_seq" model="ir.sequence">
+			<field name="name">ARO - Stock Journal</field>
+			<field name="code">aro.stock</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="prefix">ARO/STJ/%(year)s</field>
+			<field name="padding">4</field>
+			<field name="implementation">standard</field>
+		</record>
+	</data>
+</openerp>

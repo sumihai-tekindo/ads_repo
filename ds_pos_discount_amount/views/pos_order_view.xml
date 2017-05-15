@@ -1,0 +1,21 @@
+<openerp>
+	<data>
+		<record id="pos_order_discount_amt_inherit" model="ir.ui.view">
+			<field name="name">pos.order.discount.amt.inherit</field>
+			<field name="model">pos.order</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+			<field name="priority" eval="32"/>
+			<field name="arch" type="xml">
+				<field name="fiscal_position_id" position="after">
+					<field name="total_discount"/>
+				</field>
+				<xpath expr="/form/sheet/notebook/page[1]/field[@name='lines']/tree/field[@name='discount']" position="after">
+					<field name="discount_amt"/>
+				</xpath>
+				<xpath expr="/form/sheet/notebook/page[1]/field[@name='lines']/form/group[1]/field[@name='discount']" position="after">
+					<field name="discount_amt"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>
