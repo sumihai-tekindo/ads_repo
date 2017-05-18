@@ -1,0 +1,15 @@
+<openerp>
+	<data>
+		<record id="account_aged_balance_view_multicompany" model="ir.ui.view">
+			<field name="name">account.aged.trial.balance.view.multicompany</field>
+			<field name="model">account.aged.trial.balance</field>
+			<field name="inherit_id" ref="account.account_aged_balance_view" />
+			<field name="arch" type="xml">
+				<field name="date_from" position="before">
+					<field name="company_id"/>
+					<newline/>
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>

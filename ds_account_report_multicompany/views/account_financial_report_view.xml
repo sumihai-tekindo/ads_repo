@@ -1,0 +1,18 @@
+<openerp>
+	<data>
+		<record id="accounting_report_view_multicompany" model="ir.ui.view">
+			<field name="name">	accounting.report.view.multicompany</field>
+			<field name="model">accounting.report</field>
+			<field name="inherit_id" ref="account.accounting_report_view" />
+			<field name="arch" type="xml">
+				<field name="company_id" position="attributes">
+					<attribute name="invisible">0</attribute>
+					<attribute name="colspan">2</attribute>
+				</field>
+				<field name="company_id" position="after">
+					<newline/>
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>

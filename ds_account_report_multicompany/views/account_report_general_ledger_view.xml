@@ -1,0 +1,15 @@
+<openerp>
+	<data>
+		<record id="account_report_general_ledger_view_multicompany" model="ir.ui.view">
+			<field name="name">	account.report.general.ledger.view.multicompany</field>
+			<field name="model">account.report.general.ledger</field>
+			<field name="inherit_id" ref="account.account_report_general_ledger_view" />
+			<field name="arch" type="xml">
+				<field name="target_move" position="before">
+					<field name="company_id"/>
+					<newline/>
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>
