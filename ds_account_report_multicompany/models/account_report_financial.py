@@ -11,6 +11,7 @@ class AccountingReport(models.TransientModel):
 	def _build_comparison_context(self, data):
 		result = super(AccountingReport, self)._build_comparison_context(data)
 		result['company_id'] = 'company_id' in data['form'] and data['form']['company_id'] or self.env.user.company_id.id
+		print "--------result---------",result
 		return result
 
 	@api.multi
@@ -65,8 +66,9 @@ class ReportFinancial(models.AbstractModel):
 			'debit': "COALESCE(SUM(debit), 0) as debit",
 			'credit': "COALESCE(SUM(credit), 0) as credit",
 		}
-		if self._context.get('context_multicompany',False):
-			accounts = self.env['account.account'].search([('id','in',[a.id for a in accounts]),('company_id','=',self._context.get('context_multicompany'))])
+		if self._context.get('company_id',False):
+	
+			accounts = self.env['account.account'].search([('id','in',[a.id for a in accounts]),('company_id','=',self._context.get('company_id'))])
 		res = {}
 		for account in accounts:
 			res[account.id] = dict((fn, 0.0) for fn in mapping.keys())
@@ -83,6 +85,7 @@ class ReportFinancial(models.AbstractModel):
 							+ filters + \
 					   " GROUP BY account_id"
 			params = (tuple(accounts._ids),) + tuple(where_params)
+			
 			self.env.cr.execute(request, params)
 			for row in self.env.cr.dictfetchall():
 				res[row['id']] = row
@@ -98,7 +101,7 @@ class ReportFinancial(models.AbstractModel):
 			   'sum' : it's the sum of the children of this record (aka a 'view' record)'''
 		
 		res = {}
-		# print "===================",self._context
+		print "===================",self._context
 		company_id = self._context.get('company_id',False)
 		context_multicompany = {}
 		if company_id:
@@ -110,26 +113,26 @@ class ReportFinancial(models.AbstractModel):
 			res[report.id] = dict((fn, 0.0) for fn in fields)
 			if report.type == 'accounts':
 				# it's the sum of the linked accounts
-				res[report.id]['account'] = self.with_context(context_multicompany)._compute_account_balance(report.account_ids)
+				res[report.id]['account'] = self._compute_account_balance(report.account_ids)
 				for value in res[report.id]['account'].values():
 					for field in fields:
 						res[report.id][field] += value.get(field)
 			elif report.type == 'account_type':
 				# it's the sum the leaf accounts with such an account type
 				accounts = self.env['account.account'].search([('user_type_id', 'in', report.account_type_ids.ids)])
-				res[report.id]['account'] = self.with_context(context_multicompany)._compute_account_balance(accounts)
+				res[report.id]['account'] = self._compute_account_balance(accounts)
 				for value in res[report.id]['account'].values():
 					for field in fields:
 						res[report.id][field] += value.get(field)
 			elif report.type == 'account_report' and report.account_report_id:
 				# it's the amount of the linked report
-				res2 = self.with_context(context_multicompany)._compute_report_balance(report.account_report_id)
+				res2 = self._compute_report_balance(report.account_report_id)
 				for key, value in res2.items():
 					for field in fields:
 						res[report.id][field] += value[field]
 			elif report.type == 'sum':
 				# it's the sum of the children of this account.report
-				res2 = self.with_context(context_multicompany)._compute_report_balance(report.children_ids)
+				res2 = self._compute_report_balance(report.children_ids)
 				for key, value in res2.items():
 					for field in fields:
 						res[report.id][field] += value[field]
