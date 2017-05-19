@@ -6,7 +6,7 @@
     'website': 'www.github.com/dedisinaga',
     'license': 'AGPL-3',
     'depends': [
-        'web','point_of_sale','pos_stock_avail','purchase','sale','stock',
+        'web','point_of_sale','account','pos_stock_avail','purchase','sale','stock',
     ],
     'data': [
         'views/template.xml',
@@ -14,6 +14,7 @@
         "views/product_pricelist_view.xml",
         "views/product_view.xml",
         "views/pos_order_view.xml",
+        "views/account_invoice_view.xml",
     ],
     'qweb': [
         'static/src/xml/*.xml',

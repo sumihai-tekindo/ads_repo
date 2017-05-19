@@ -216,6 +216,8 @@ class pos_order(osv.osv):
 				'name': order.name,
 				'origin': order.name,
 				'account_id': acc,
+				'online_shop_trans_code': order.online_shop_trans_code or False,
+				'analytic_account_id':self._prepare_analytic_account(cr, uid, order.lines[0], context=local_context),
 				'journal_id': order.sale_journal.id or None,
 				'type': 'out_invoice',
 				'reference': order.name,

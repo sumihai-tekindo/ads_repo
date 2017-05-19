@@ -1,0 +1,15 @@
+<openerp>
+	<data>
+		<record id="invoice_form_inherit_pos_multi_company" model="ir.ui.view">
+			<field name="name">invoice.form.inherit.pos.multi.company</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_form" />
+			<field name="arch" type="xml">
+				<field name="date_due" position="after">
+					<field name="online_shop_trans_code"/>
+					<field name="analytic_account_id"/>
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>
