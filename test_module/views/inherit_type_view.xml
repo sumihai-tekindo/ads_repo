@@ -1,0 +1,16 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="inherit_type_form_view">
+            <field name="name">business.type.form.inherit</field>
+            <field name="model">business.type</field>
+            <field name="inherit_id" ref="business_type_form_view"/>
+            <field name="arch" type="xml">
+	            <data>
+	            	<field name="business_type" position="after">
+                		<field name="cost"/>
+                	</field>
+	            </data>
+            </field>
+        </record>
+	</data>
+</openerp>

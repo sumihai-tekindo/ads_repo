@@ -1,0 +1,43 @@
+<openerp>
+	<data>
+		<record id="view_laporan_produk_xls" model="ir.ui.view">
+			<field name="name">Print/Export Laporan Produk</field>
+			<field name="model">laporan.produk</field>
+			<field name="arch" type="xml">
+				<form string="Print/Export Laporan Produk">
+					<group string="Filters">
+						<field name="start_date" placeholder="Start Date"/>
+						<field name="end_date" placeholder="End Date"/>
+						<field name="report_type"/>
+						<field name="invoice_state" attrs="{'invisible':[('report_type','!=','range_margin')]}"/>
+					</group>
+					<footer>
+						<button icon="gtk-print" name="print_report" string="Print" type="object" class="oe_highlight" context="{'xls':1}"/> or 
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	
+		
+		<record id="action_print_laporan_produk" model="ir.actions.act_window">
+			<field name="name">Laporan Produk</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">laporan.produk</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_laporan_produk_xls"/>
+			<field name="target">new</field>
+		</record>
+		
+		
+		<menuitem 
+			name="Laporan Produk"
+			sequence="1"
+			action="action_print_laporan_produk"
+			id="menu_print_laporan_produk"
+			icon="STOCK_PRINT"
+			parent="account.account_reports_management_menu"
+		/>
+	</data>
+</openerp>

@@ -1,0 +1,12 @@
+<openerp>
+	<data>
+		<record id="action_laporan_asset_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan Asset</field>
+			<field name="model">account.asset.asset</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">laporan.asset.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,30 @@
+<openerp>
+	<data>
+		<record id="action_laporan_produk_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan Produk</field>
+			<field name="model">stock.move</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">laporan.produk.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+
+		<record id="action_ranking_penjualan_xls" model="ir.actions.report.xml">
+			<field name="name">Ranking Penjualan</field>
+			<field name="model">stock.move</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">ranking.penjualan.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		
+		<record id="action_range_margin_xls" model="ir.actions.report.xml">
+			<field name="name">Range Margin</field>
+			<field name="model">stock.move</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">range.margin.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+	</data>
+</openerp>

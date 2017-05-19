@@ -1,0 +1,41 @@
+<openerp>
+	<data>
+		<record id="view_laporan_sales_xls" model="ir.ui.view">
+			<field name="name">Print/Export Laporan Sales</field>
+			<field name="model">laporan.sales</field>
+			<field name="arch" type="xml">
+				<form string="Print/Export Laporan Sales">
+					<group string="Filters">
+						<field name="start_date" placeholder="Start Date"/>
+						<field name="end_date" placeholder="End Date"/>
+					</group>
+					<footer>
+						<button icon="gtk-print" name="print_report" string="Print" type="object" class="oe_highlight" context="{'xls':1}"/> or 
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	
+		
+		<record id="action_print_laporan_sales" model="ir.actions.act_window">
+			<field name="name">Laporan Sales</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">laporan.sales</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_laporan_sales_xls"/>
+			<field name="target">new</field>
+		</record>
+		
+		
+		<menuitem 
+			name="Laporan Sales"
+			sequence="1"
+			action="action_print_laporan_sales"
+			id="menu_print_laporan_sales"
+			icon="STOCK_PRINT"
+			parent="account.account_reports_management_menu"
+		/>
+	</data>
+</openerp>
