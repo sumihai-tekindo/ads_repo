@@ -15,6 +15,7 @@
         "views/product_view.xml",
         "views/pos_order_view.xml",
         "views/account_invoice_view.xml",
+        "reports/inherited_report_invoice.xml",
     ],
     'qweb': [
         'static/src/xml/*.xml',

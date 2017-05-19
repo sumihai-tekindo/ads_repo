@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="report_invoice_document" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[@name='reference']" position="after">
+        <div name="online_shop_trans_code" class="col-xs-2" t-if="o.online_shop_trans_code">
+            <strong>Transaction Code:</strong>
+            <p t-field="o.online_shop_trans_code"/>
+        </div>
+        <div name="analytic_account_id" class="col-xs-2" t-if="o.analytic_account_id">
+            <strong>Analytic Account:</strong>
+            <p t-field="o.analytic_account_id"/>
+        </div>
+    </xpath>
+</template>
+
+</data>
+</openerp>
