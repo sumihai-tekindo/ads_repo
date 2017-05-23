@@ -13,6 +13,14 @@
             <p t-field="o.analytic_account_id"/>
         </div>
     </xpath>
+
+    <xpath expr="//div[@class='page']/div[1]/div[1]" position="after">
+        <div name="user_id" class="col-xs-5 col-xs-offset-7" t-if="o.user_id">
+            <strong>Sales Person:</strong>
+            <p t-field="o.user_id"/>
+        </div>
+    </xpath>
+
 </template>
 
 </data>
