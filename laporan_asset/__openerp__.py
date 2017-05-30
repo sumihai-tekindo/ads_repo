@@ -10,7 +10,7 @@
     'author': 'Andrean Wijaya',
     'website': '-',
     'description': """This modules provide Laporan Asset""",
-    'depends': ['base',"account",'report_xls'],
+    'depends': ['base',"account",'report_xls','account_asset'],
     'data': [
         'views/laporan_asset_view.xml',
         'reports/laporan_asset.xml',

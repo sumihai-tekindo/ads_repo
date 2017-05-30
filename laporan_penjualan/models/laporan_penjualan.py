@@ -3,12 +3,12 @@ from openerp import models, fields, api, _
 class laporan_penjualan(models.TransientModel):
     _name="laporan.penjualan"
     
-    start_date = fields.Date(string="Start Date", required=True)
-    end_date = fields.Date(string="End Date", required=True)
+    start_date = fields.Date(string="Start Date", required=True,default="2017-05-01")
+    end_date = fields.Date(string="End Date", required=True,default="2017-05-31")
     report_type = fields.Selection([('laporan_penjualan','Online'),
                                     ('laporan_penjualan_off','Offline')],
-                                   string="Report Type",required=True)
-
+                                   string="Report Type",required=True,default="laporan_penjualan")
+    company_id = fields.Many2one('res.company',string='Company',required=True)
     account_ids = fields.Many2many(comodel_name='account.account',string='Accounts')
     
         
@@ -16,16 +16,15 @@ class laporan_penjualan(models.TransientModel):
     def print_report(self,):
         self.ensure_one()
         datas ={}
+        company_id = self.company_id.id
+        
         if self.report_type=='laporan_penjualan':
-            account_ids = [x.id for x in self.env['account.account'].search([('user_type_id','=','Receivable')])]
-            mvl_ids = self.env['account.move.line'].search([('date','>=',self.start_date),
-                                                       ('date','<=',self.end_date),
-                                                       ('account_id','in',account_ids), 
-                                                       ])
-            list_mvl= [mvl.id for mvl in mvl_ids]
+            analytic_id = self.env['account.analytic.account'].search([('online_type','=','online'),('company_id','=',self.company_id.id)])
+            invoice_ids = self.env['account.invoice'].search([('analytic_account_id','in',[a.id for a in analytic_id]),('type','=','out_invoice'),('date','>=',self.start_date),('date','<=',self.end_date),('company_id','=',self.company_id.id),('state','in',('open','paid'))])
+            # print "xxxxxxxxxxxxxxxxxxxxxxxxxx",invoice_ids
             datas={
-                'model'    : 'account.move.line',
-                "ids"    : list_mvl, #id record dari tabel account.cashback.lines
+                'model'    : 'account.invoice',
+                "ids"    : [inv.id for inv in invoice_ids], 
                 'start_date':self.start_date,
                 'end_date':self.end_date,
                 'report_type':self.report_type,
@@ -38,15 +37,11 @@ class laporan_penjualan(models.TransientModel):
 
             
         elif self.report_type=='laporan_penjualan_off':
-            account_ids = [x.id for x in self.env['account.account'].search([('user_type_id','=','Receivable')])]
-            mvl_ids = self.env['account.move.line'].search([('date','>=',self.start_date),
-                                                       ('date','<=',self.end_date),
-                                                       ('account_id','in',account_ids), 
-                                                       ])
-            list_mvl= [mvl.id for mvl in mvl_ids]
+            analytic_id = self.env['account.analytic.account'].search([('online_type','=','offline'),('company_id','=',self.company_id.id)])
+            invoice_ids = self.env['account.invoice'].search([('analytic_account_id','in',[a.id for a in analytic_id]),('type','=','out_invoice'),('date','>=',self.start_date),('date','<=',self.end_date),('company_id','=',self.company_id.id),('state','in',('open','paid'))])
             datas={
-                'model'    : 'account.move.line',
-                "ids"    : list_mvl, #id record dari tabel account.cashback.lines
+                'model'    : 'account.invoice',
+                "ids"    : [inv.id for inv in invoice_ids], 
                 'start_date':self.start_date,
                 'end_date':self.end_date,
                 'report_type':self.report_type,

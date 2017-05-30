@@ -1,4 +1,5 @@
 from . import sale
+from . import analytic
 from . import account_invoice
 from . import product_pricelist
 from . import product

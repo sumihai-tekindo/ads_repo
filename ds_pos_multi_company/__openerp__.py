@@ -10,6 +10,7 @@
     ],
     'data': [
         'views/template.xml',
+        'views/analytic_view.xml',
         "views/pos_config_view.xml",
         "views/product_pricelist_view.xml",
         "views/product_view.xml",

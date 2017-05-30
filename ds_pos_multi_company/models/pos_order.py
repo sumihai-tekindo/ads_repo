@@ -86,6 +86,7 @@ class pos_order(osv.osv):
 				'currency_id': order.pricelist_id.currency_id.id, # considering partner's sale pricelist's currency
 				'company_id': company_id,
 				'user_id': (order.user_id and order.user_id.id) or (order.pos_admin and order.pos_admin.id),
+				'payment_journal_ids':False
 			}
 			invoice = inv_ref.new(cr, uid, inv)
 			invoice._onchange_partner_id()
@@ -94,6 +95,11 @@ class pos_order(osv.osv):
 			inv = invoice._convert_to_write(invoice._cache)
 			if not inv.get('account_id', None):
 				inv['account_id'] = acc
+			payment_journal_ids =[]
+			for s in order.statement_ids:
+				if s.amount!=0.0:
+					payment_journal_ids.append((0,0,{'journal_id':s.journal_id.id,'amount':s.amount}))
+			inv.update({'payment_journal_ids':payment_journal_ids})
 			inv_id = inv_ref.create(cr, SUPERUSER_ID, inv, context=local_context)
 
 			self.write(cr, uid, [order.id], {'invoice_id': inv_id, 'state': 'invoiced'}, context=local_context)
@@ -328,8 +334,8 @@ class pos_order(osv.osv):
 		for tmp_order in orders_to_save:
 			order = tmp_order['data']
 			internal_transaction = self.create_internal_transactions(cr,uid,order,context=context)
-
-		return super(pos_order,self).create_from_ui(cr,uid,orders,context=context)
+		res = super(pos_order,self).create_from_ui(cr,uid,orders,context=context)
+		return res
 
 
 class pos_order_line(osv.osv):

@@ -11,7 +11,7 @@ class laporan_ap(models.TransientModel):
     info = fields.Selection([('partner','Per Partner'),
                                     ('summary','Summary')],
                                    string="Report Info",required=True)
-    
+    company_id = fields.Many2one('res.company','Company',required=True)
     
     @api.multi
     def print_report(self,):
@@ -21,7 +21,8 @@ class laporan_ap(models.TransientModel):
             inv_ids = self.env['account.invoice'].search([('date','>=',self.start_date),
                                                           ('date','<=',self.end_date),
                                                           ('type','=','in_invoice'),
-                                                          ('state','in',['open','paid'])
+                                                          ('state','in',['open','paid']),
+                                                          ('company_id','=',self.company_id.id)
                                                           ])
             list_inv= [inv.id for inv in inv_ids]
             datas={
@@ -42,7 +43,9 @@ class laporan_ap(models.TransientModel):
             inv_ids = self.env['account.invoice'].search([('date','>=',self.start_date),
                                                           ('date','<=',self.end_date),
                                                           ('type','=','in_invoice'),
-                                                          ('state','in',['open','paid'])])
+                                                          ('state','in',['open','paid']),
+                                                          ('company_id','=',self.company_id.id),
+                                                          ])
             list_inv= [inv.id for inv in inv_ids]
             datas={
                 'model'    : 'account.invoice',

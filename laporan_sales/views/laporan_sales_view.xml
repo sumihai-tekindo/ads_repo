@@ -1,11 +1,13 @@
 <openerp>
 	<data>
 		<record id="view_laporan_sales_xls" model="ir.ui.view">
-			<field name="name">Print/Export Laporan Sales</field>
+			<field name="name">Print/Export Laporan Sales Commission</field>
 			<field name="model">laporan.sales</field>
 			<field name="arch" type="xml">
 				<form string="Print/Export Laporan Sales">
 					<group string="Filters">
+						<field name="company_id"/>
+						<field name="sale_type"/>
 						<field name="start_date" placeholder="Start Date"/>
 						<field name="end_date" placeholder="End Date"/>
 					</group>
@@ -19,7 +21,7 @@
 	
 		
 		<record id="action_print_laporan_sales" model="ir.actions.act_window">
-			<field name="name">Laporan Sales</field>
+			<field name="name">Laporan Sales Commission</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">laporan.sales</field>
 			<field name="view_type">form</field>

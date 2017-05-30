@@ -22,7 +22,30 @@ class laporan_penjualan_off_xls_parser(report_sxw.rml_parse):
         super(laporan_penjualan_off_xls_parser, self).__init__(cr, uid, name,
                                                          context=context)
         self.context = context
+        self.localcontext.update({
+            'datetime': datetime,
+            'get_invoices':self._get_invoices
+        })
 
+
+    def _get_invoices(self,objects):
+        invoices = {}
+
+        for inv in objects:
+            if inv.partner_id not in invoices.keys():
+                invoices[inv.partner_id]={}
+            if inv.partner_id in invoices.keys():
+                if not invoices[inv.partner_id].get('wholesale',False):
+                    invoices[inv.partner_id]['wholesale']=0.0
+                if not invoices[inv.partner_id].get('retail',False):
+                    invoices[inv.partner_id]['retail']=0.0
+
+                amt_whs = inv.analytic_account_id and inv.analytic_account_id.sale_type=='wholesale' and (invoices[inv.partner_id]['wholesale']+inv.amount_total) or 0.0
+                invoices[inv.partner_id]['wholesale']=amt_whs
+                amt_ret = inv.analytic_account_id and inv.analytic_account_id.sale_type=='retail' and (invoices[inv.partner_id]['retail']+inv.amount_total) or 0.0
+                invoices[inv.partner_id]['retail']=amt_ret
+
+        return invoices
 
 class laporan_penjualan_off_xls(report_xls):
     
@@ -86,19 +109,21 @@ class laporan_penjualan_off_xls(report_xls):
         no=1
         col = 0
         row=6
-        max_len = [0,0,0,0,0]
-        for rec in objects:
+        max_len = [int(len(x)*1.5) for x in headers]
+        print "maxxxxxxxxxx",max_len
+        invoices = _p.get_invoices(objects)
+        for rec in invoices:
             ws.write(row,0,no,normal_style_float_round)
             ws.write(row,1,rec.name,normal_style)
-            ws.write(row,2,rec.credit,normal_style)
-            ws.write(row,3,rec.journal_id.name,normal_style)
-            ws.write(row,4,rec.statement_id.name,normal_style)
+            ws.write(row,2,invoices[rec]['wholesale'],normal_style)
+            ws.write(row,3,invoices[rec]['retail'],normal_style)
+            ws.write(row,4,invoices[rec]['wholesale']+invoices[rec]['retail'],normal_style)
             
             max_len[0]=len(str(no))+3 > max_len[0] and len(str(no))+3 or max_len[0]
             max_len[1]=len(str(rec.name)) > max_len[1] and len(str(rec.name)) or max_len[1]
-            max_len[2]=len(str(rec.credit)) > max_len[2] and len(str(rec.credit)) or max_len[2]
-            max_len[3]=len(str(rec.journal_id.name)) > max_len[3] and len(str(rec.journal_id.name)) or max_len[3]
-            max_len[4]=len(str(rec.statement_id.name)) > max_len[4] and len(str(rec.statement_id.name)) or max_len[4]
+            max_len[2]=len(str(invoices[rec]['wholesale'])) > max_len[2] and len(str(invoices[rec]['wholesale'])) or max_len[2]
+            max_len[3]=len(str(invoices[rec]['retail'])) > max_len[3] and len(str(invoices[rec]['retail'])) or max_len[3]
+            max_len[4]=len(str(invoices[rec]['wholesale']+invoices[rec]['retail'])) > max_len[4] and len(str(invoices[rec]['wholesale']+invoices[rec]['retail'])) or max_len[4]
             
             row+=1
             no+=1
@@ -113,6 +138,6 @@ class laporan_penjualan_off_xls(report_xls):
         ws.write(row,4,xlwt.Formula("SUM($E$7:$E$"+str(row)+")"),subtotal_style2)
         
         
-laporan_penjualan_off_xls('report.laporan.penjualan.off.xls', 'account.move.line', parser=laporan_penjualan_off_xls_parser)
+laporan_penjualan_off_xls('report.laporan.penjualan.off.xls', 'account.invoice', parser=laporan_penjualan_off_xls_parser)
             
         

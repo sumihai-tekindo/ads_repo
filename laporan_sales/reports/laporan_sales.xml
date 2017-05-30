@@ -1,10 +1,26 @@
 <openerp>
 	<data>
-		<record id="action_laporan_sales_xls" model="ir.actions.report.xml">
-			<field name="name">Laporan Sales</field>
-			<field name="model">account.move.line</field>
+		<record id="action_laporan_comm_offline_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan Sales Offline</field>
+			<field name="model">commission.compute.line.detail</field>
 			<field name="type">ir.actions.report.xml</field>
-			<field name="report_name">laporan.sales.xls</field>
+			<field name="report_name">laporan.comm.offline.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		<record id="action_laporan_comm_online_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan Sales Online</field>
+			<field name="model">commission.compute.line.detail</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">laporan.comm.online.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		<record id="action_laporan_comm_summary_xls" model="ir.actions.report.xml">
+			<field name="name">Laporan Sales Summary</field>
+			<field name="model">commission.compute.line.detail</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">laporan.comm.summary.xls</field>
 			<field name="report_type">xls</field>
 			<field name="auto" eval="False"/>
 		</record>

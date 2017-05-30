@@ -8,6 +8,7 @@
 				<field name="date_due" position="after">
 					<field name="online_shop_trans_code"/>
 					<field name="analytic_account_id"/>
+					<field name="payment_journal_ids" invisible="1"/>
 				</field>
 			</field>
 		</record>

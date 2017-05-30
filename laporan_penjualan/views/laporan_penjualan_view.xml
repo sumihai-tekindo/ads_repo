@@ -6,6 +6,8 @@
 			<field name="arch" type="xml">
 				<form string="Print/Export Laporan Penjualan">
 					<group string="Filters">
+						<field name="company_id"/>
+						<newline/>
 						<field name="start_date" placeholder="Start Date"/>
 						<field name="end_date" placeholder="End Date"/>
 						<field name="report_type"/>

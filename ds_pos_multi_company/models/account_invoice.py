@@ -18,3 +18,14 @@ class AccountInvoice(models.Model):
 
 	online_shop_trans_code = fields.Char("OnlineShop Transaction Code")
 	analytic_account_id = fields.Many2one("account.analytic.account",string="Analytic Account")
+	payment_journal_ids = fields.One2many('account.journal.invoice.pos','invoice_id',"PoS Payment Journal")
+
+
+class AccountJournalInvoicePos(models.Model):
+	_name="account.journal.invoice.pos"
+	
+	_rec_name="journal_id"
+
+	journal_id = fields.Many2one("account.journal","Journal")
+	amount = fields.Float("Amount")
+	invoice_id = fields.Many2one("account.invoice","Invoice")
