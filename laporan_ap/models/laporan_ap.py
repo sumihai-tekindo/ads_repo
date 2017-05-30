@@ -66,7 +66,8 @@ class laporan_ap(models.TransientModel):
             inv_ids = self.env['account.invoice'].search([('date','>=',self.start_date),
                                                           ('date','<=',self.end_date),
                                                           ('type','=','out_invoice'),
-                                                          ('state','in',['open','paid'])
+                                                          ('state','in',['open','paid']),
+                                                          ('company_id','=',self.company_id.id),
                                                           ])
             list_inv= [inv.id for inv in inv_ids]
             datas={
@@ -87,7 +88,9 @@ class laporan_ap(models.TransientModel):
             inv_ids = self.env['account.invoice'].search([('date','>=',self.start_date),
                                                           ('date','<=',self.end_date),
                                                           ('type','=','out_invoice'),
-                                                          ('state','in',['open','paid'])])
+                                                          ('state','in',['open','paid']),
+                                                          ('company_id','=',self.company_id.id),
+                                                          ])
             list_inv= [inv.id for inv in inv_ids]
             datas={
                 'model'    : 'account.invoice',
