@@ -32,7 +32,7 @@ class laporan_comm_summary_xls_parser(report_sxw.rml_parse):
         # print "-----------------",objects
         commissions = {}
         for comm in objects:
-            
+            rule_type = comm.rule_type in ('whs_on','whs_off') and 'wholesale' or comm.rule_type in ('ret_on','ret_off') or 'retail'
             amt_on_whs = comm.rule_type=='whs_on' and comm.amount_untaxed or 0.0
             comm_on_whs = comm.rule_type=='whs_on' and comm.commission_amount or 0.0
             amt_on_ret = comm.rule_type=='ret_on' and comm.amount_untaxed or 0.0 
@@ -45,9 +45,9 @@ class laporan_comm_summary_xls_parser(report_sxw.rml_parse):
             if comm.sale_user_id not in commissions:
                 commissions.update({comm.sale_user_id:{'wholesale':{'amt_on_whs':amt_on_whs,'comm_on_whs':comm_on_whs,'amt_of_whs':amt_of_whs,'comm_of_whs':comm_of_whs},'retail':{'amt_on_ret':amt_on_ret,'comm_on_ret':comm_on_ret,'amt_of_ret':amt_of_ret,'comm_of_ret':comm_of_ret}}})
             else:
-                if comm.rule_type in ('whs_on','whs_off') and comm.rule_type not in commissions[comm.sale_user_id]:
+                if comm.rule_type in ('whs_on','whs_off') and rule_type not in commissions[comm.sale_user_id]:
                     commissions[comm.sale_user_id]['wholesale'].update({'amt_on_whs':amt_on_whs,'comm_on_whs':comm_on_whs,'amt_of_whs':amt_of_whs,'comm_of_whs':comm_of_whs})
-                elif comm.rule_type in ('ret_on','ret_off') and comm.rule_type not in commissions[comm.sale_user_id]:
+                elif comm.rule_type in ('ret_on','ret_off') and rule_type not in commissions[comm.sale_user_id]:
                     commissions[comm.sale_user_id]['retail'].update({'amt_on_ret':amt_on_ret,'comm_on_ret':comm_on_ret,'amt_of_ret':amt_of_ret,'comm_of_ret':comm_of_ret})
                 else:
                     amt_on_whs+=commissions[comm.sale_user_id]['wholesale']['amt_on_whs']
@@ -57,7 +57,7 @@ class laporan_comm_summary_xls_parser(report_sxw.rml_parse):
                     amt_on_ret+=commissions[comm.sale_user_id]['retail']['amt_on_ret']
                     amt_of_ret+=commissions[comm.sale_user_id]['retail']['amt_of_ret']
                     comm_on_ret+=commissions[comm.sale_user_id]['retail']['comm_on_ret']
-                    comm_of_ret+=commissions[comm.sale_user_id]['retail']['commission']
+                    comm_of_ret+=commissions[comm.sale_user_id]['retail']['comm_of_ret']
                     commissions[comm.sale_user_id]['wholesale'].update({'amt_on_whs':amt_on_whs,'comm_on_whs':comm_on_whs,'amt_of_whs':amt_of_whs,'comm_of_whs':comm_of_whs})
                     commissions[comm.sale_user_id]['retail'].update({'amt_on_ret':amt_on_ret,'comm_on_ret':comm_on_ret,'amt_of_ret':amt_of_ret,'comm_of_ret':comm_of_ret})
         return commissions
@@ -71,8 +71,6 @@ class laporan_comm_summary_xls(report_xls):
 
 
     def generate_xls_report(self, _p, _xs, data, objects, wb):
-       
-        
         
         ##Penempatan untuk template rows
         title_style                     = xlwt.easyxf('font: height 180, name Calibri, colour_index black, bold on; align: wrap on, vert centre, horiz left; ')
@@ -118,7 +116,7 @@ class laporan_comm_summary_xls(report_xls):
         ws.page_preview = False
         ws.set_fit_width_to_pages(1)
         
-        ws.write_merge(0,0,0,6,"LAPORAN REKAPITULASI KOMISI",title_style_center)
+        ws.write_merge(0,0,0,10,"LAPORAN REKAPITULASI KOMISI",title_style_center)
                     
         ws.write_merge(3,3,0,1,"Tanggal",normal_bold_style_a)
         ws.write_merge(3,3,2,4,": "+data['start_date']+" - "+data['end_date'],normal_bold_style_a)     
@@ -147,16 +145,8 @@ class laporan_comm_summary_xls(report_xls):
         max_len = [int(len(x)*1.5) for x in header]
         grouped_data = _p.group_data(objects)
 
-        # amt_on_whs = comm.rule_type=='whs_on' and comm.amount_untaxed or 0.0
-        # comm_on_whs = comm.rule_type=='whs_on' and comm.commission_amount or 0.0
-        # amt_on_ret = comm.rule_type=='ret_on' and comm.amount_untaxed or 0.0 
-        # comm_on_ret = comm.rule_type=='ret_on' and comm.commission_amount or 0.0
-        # amt_of_whs = comm.rule_type=='whs_on' and comm.amount_untaxed or 0.0
-        # comm_of_whs = comm.rule_type=='whs_on' and comm.commission_amount or 0.0
-        # amt_of_ret = comm.rule_type=='ret_on' and comm.amount_untaxed or 0.0 
-        # comm_of_ret = comm.rule_type=='ret_on' and comm.commission_amount or 0.0
         no=1
-
+        start_row = row
         for sales in grouped_data:  
             ws.write(row,0,no,normal_style_float_round)
             ws.write(row,1,sales.name,normal_style)
@@ -181,16 +171,26 @@ class laporan_comm_summary_xls(report_xls):
             max_len[6]=len(str(grouped_data[sales]['wholesale']['amt_of_whs'])) > max_len[6] and len(str(grouped_data[sales]['wholesale']['amt_of_whs'])) or max_len[6]
             max_len[7]=len(str(grouped_data[sales]['wholesale']['comm_of_whs'])) > max_len[7] and len(str(grouped_data[sales]['wholesale']['comm_of_whs'])) or max_len[7]
             max_len[8]=len(str(grouped_data[sales]['retail']['amt_of_ret'])) > max_len[8] and len(str(grouped_data[sales]['retail']['amt_of_ret'])) or max_len[8]
-            max_len[9]=len(str(grouped_data[sales]['retail']['comm_of_ret'])) > max_len[9] and len(str(grouped_data[sales]['retail']['comm_of_ret'])) or max_len[9]
+            max_len[9]=len(str(subtotal_row)) > max_len[9] and len(str(subtotal_row)) or max_len[9]
        
             no+=1
             row+=1
             
-            
+        ws.write_merge(row,row,0,1,"TOTAL",subtotal_style2)
+        ws.write(row,2,xlwt.Formula("SUM($C$"+str(start_row+1)+":$C$"+str(row)+")"),subtotal_style2)
+        ws.write(row,3,xlwt.Formula("SUM($D$"+str(start_row+1)+":$D$"+str(row)+")"),subtotal_style2)
+        ws.write(row,4,xlwt.Formula("SUM($E$"+str(start_row+1)+":$E$"+str(row)+")"),subtotal_style2)
+        ws.write(row,5,xlwt.Formula("SUM($F$"+str(start_row+1)+":$F$"+str(row)+")"),subtotal_style2)
+        ws.write(row,6,xlwt.Formula("SUM($G$"+str(start_row+1)+":$G$"+str(row)+")"),subtotal_style2)
+        ws.write(row,7,xlwt.Formula("SUM($H$"+str(start_row+1)+":$H$"+str(row)+")"),subtotal_style2)
+        ws.write(row,8,xlwt.Formula("SUM($I$"+str(start_row+1)+":$I$"+str(row)+")"),subtotal_style2)
+        ws.write(row,9,xlwt.Formula("SUM($J$"+str(start_row+1)+":$J$"+str(row)+")"),subtotal_style2)
+        ws.write(row,10,xlwt.Formula("SUM($K$"+str(start_row+1)+":$K$"+str(row)+")"),subtotal_style2)
+
         for x in range(0,10):
             ws.col(x).width=max_len[x]*256
         
-    
+        
         
         
 laporan_comm_summary_xls('report.laporan.comm.summary.xls', 'commission.compute.line.detail', parser=laporan_comm_summary_xls_parser)
