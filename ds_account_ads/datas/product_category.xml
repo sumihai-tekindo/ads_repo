@@ -1,0 +1,474 @@
+<openerp>
+	<data>
+		<record id='product.product_category_1' model='product.category'>
+			<field name='name'>ARO Saleable</field>
+			<field name='parent_id' ref='product.product_category_all'/>
+			<field name='type'>view</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_1' model='product.category'>
+			<field name='name'>Accessories</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_2' model='product.category'>
+			<field name='name'>Driptip</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_3' model='product.category'>
+			<field name='name'>KIT</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_4' model='product.category'>
+			<field name='name'>Coil</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_5' model='product.category'>
+			<field name='name'>Essence</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_6' model='product.category'>
+			<field name='name'>Liquid</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_7' model='product.category'>
+			<field name='name'>Mod</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_8' model='product.category'>
+			<field name='name'>Atomizer</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_9' model='product.category'>
+			<field name='name'>Wire</field>
+			<field name='parent_id' ref='product.product_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_10' model='product.category'>
+			<field name='name'>ARO Non-Saleable</field>
+			<field name='parent_id' ref='product.product_category_all'/>
+			<field name='type'>view</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aro_category_11' model='product.category'>
+			<field name='name'>Biaya</field>
+			<field name='parent_id' ref='aro_category_10'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARO')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARO')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARO')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_1' model='product.category'>
+			<field name='name'>ARI Saleable</field>
+			<field name='parent_id' ref='product.product_category_all'/>
+			<field name='type'>view</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_2' model='product.category'>
+			<field name='name'>Accessories</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_3' model='product.category'>
+			<field name='name'>Driptip</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_4' model='product.category'>
+			<field name='name'>KIT</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_5' model='product.category'>
+			<field name='name'>Coil</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_6' model='product.category'>
+			<field name='name'>Essence</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_7' model='product.category'>
+			<field name='name'>Liquid</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_8' model='product.category'>
+			<field name='name'>Mod</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_9' model='product.category'>
+			<field name='name'>Atomizer</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_10' model='product.category'>
+			<field name='name'>Wire</field>
+			<field name='parent_id' ref='ari_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_11' model='product.category'>
+			<field name='name'>ARI Non-Saleable</field>
+			<field name='parent_id' ref='product.product_category_all'/>
+			<field name='type'>view</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='ari_category_12' model='product.category'>
+			<field name='name'>Biaya</field>
+			<field name='parent_id' ref='ari_category_11'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','ARI')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','ARI')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','ARI')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_1' model='product.category'>
+			<field name='name'>AUR Saleable</field>
+			<field name='parent_id' ref='product.product_category_all'/>
+			<field name='type'>view</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_2' model='product.category'>
+			<field name='name'>Accessories</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_3' model='product.category'>
+			<field name='name'>Driptip</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_4' model='product.category'>
+			<field name='name'>KIT</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_5' model='product.category'>
+			<field name='name'>Coil</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_6' model='product.category'>
+			<field name='name'>Essence</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_7' model='product.category'>
+			<field name='name'>Liquid</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_8' model='product.category'>
+			<field name='name'>Mod</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_9' model='product.category'>
+			<field name='name'>Atomizer</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_10' model='product.category'>
+			<field name='name'>Wire</field>
+			<field name='parent_id' ref='aur_category_1'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_11' model='product.category'>
+			<field name='name'>AUR Non-Saleable</field>
+			<field name='parent_id' ref='product.product_category_all'/>
+			<field name='type'>view</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+		<record id='aur_category_12' model='product.category'>
+			<field name='name'>Biaya</field>
+			<field name='parent_id' ref='aur_category_11'/>
+			<field name='type'>normal</field>
+			<field name='property_account_income_categ_id' search="[('code','=','411000001'),('company_code','=','AUR')]"/>
+			<field name='property_account_expense_categ_id' search="[('code','=','515000013'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_input_categ_id' search="[('code','=','212000007'),('company_code','=','AUR')]"/>
+			<field name='property_stock_account_output_categ_id' search="[('code','=','511000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_valuation_account_id' search="[('code','=','112000001'),('company_code','=','AUR')]"/>
+			<field name='property_stock_journal' ref='aro_stock_journal'/>
+			<field name='property_cost_method'>average</field>
+			<field name='property_valuation'>real_time</field>
+		</record>
+
+
+	</data>
+</openerp>

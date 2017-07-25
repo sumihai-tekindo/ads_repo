@@ -6,7 +6,7 @@
     'website': 'www.github.com/dedisinaga',
     'license': 'AGPL-3',
     'depends': [
-        'base','l10n_id','account','account_accountant'
+        'base','l10n_id','account','account_accountant','product'
     ],
     'data': [
         'datas/ir_sequence_aroma.xml',
@@ -15,6 +15,7 @@
         'datas/account_journal_aroma.xml',
         'datas/account_journal_arisma.xml',
         'datas/account_journal_aura.xml',
+        'datas/product_category.xml',
     ],
     'qweb': [
     ],

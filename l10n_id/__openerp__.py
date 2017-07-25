@@ -20,9 +20,9 @@
 		'datas/res_company.xml',
 		'datas/warehouses.xml',
 		'datas/stock_location.xml',
-		'datas/account_chart_template_aroma.xml',
-		'datas/account_chart_template_arisma.xml',
-		'datas/account_chart_template_aura.xml',
+		'datas/account_chart_template_aroma_2.xml',
+		'datas/account_chart_template_arisma_2.xml',
+		'datas/account_chart_template_aura_2.xml',
 		'datas/account_chart_template.yml'
 	],
 	'installable': True,

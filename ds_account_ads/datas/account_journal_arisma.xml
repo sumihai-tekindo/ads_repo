@@ -5,8 +5,8 @@
             <field name="name">ARI - Customer Invoices</field>
             <field name="code">ARICINV</field>
             <field name="type">sale</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_411000001"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_411000001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','411000001')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','411000001')]" />
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_cust_invoice"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -16,8 +16,8 @@
             <field name="name">ARI - Customer Invoices Refund</field>
             <field name="code">ARICINV-R</field>
             <field name="type">sale</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_411000002"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_411000002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','411000002')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','411000002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_cust_invoice_refund"/>
             <field name="company_id" ref="l10n_id.second_company"/>
@@ -29,8 +29,8 @@
             <field name="name">ARI - Supplier Invoices</field>
             <field name="code">ARISINV</field>
             <field name="type">purchase</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_411000001"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_411000001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','515000013')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','515000013')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_supp_invoice"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -40,8 +40,8 @@
             <field name="name">ARI - Supplier Invoices Refund</field>
             <field name="code">ARISINV-R</field>
             <field name="type">purchase</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_411000002"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_411000002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','515000013')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','515000013')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_supp_invoice_refund"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -64,8 +64,8 @@
             <field name="name">ARI - Bank BCA 755-0790-780</field>
             <field name="code">ARIBNK1</field>
             <field name="type">bank</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_111200001"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_111200001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','111200001')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','111200001')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_bank_1"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -74,8 +74,8 @@
             <field name="name">ARI - Bank BCA 2</field>
             <field name="code">ARIBNK2</field>
             <field name="type">bank</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_111200002"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_111200002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','111200002')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','111200002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_bank_2"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -84,8 +84,8 @@
             <field name="name">ARI - Bank 3</field>
             <field name="code">ARIBNK3</field>
             <field name="type">bank</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_111200003"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_111200003"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','111200003')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','111200003')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_bank_3"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -94,8 +94,8 @@
             <field name="name">ARI - Petty Cash</field>
             <field name="code">ARICSH1</field>
             <field name="type">cash</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_111100001"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_111100001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','111100001')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','111100001')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_cash_1"/>
         	<field name="company_id" ref="l10n_id.second_company"/>
@@ -104,8 +104,8 @@
             <field name="name">ARI - Cash</field>
             <field name="code">ARICSH2</field>
             <field name="type">cash</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_111100002"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_111100002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','111100002')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','111100002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_cash_2"/>
             <field name="company_id" ref="l10n_id.second_company"/>
@@ -116,8 +116,8 @@
             <field name="name">ARI - Exchange Gain Loss</field>
             <field name="code">ARIFGL</field>
             <field name="type">general</field>
-            <field name="default_credit_account_id" ref="l10n_id.second_company_611000003"/>
-            <field name="default_debit_account_id" ref="l10n_id.second_company_711000002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','ARI'),('code','=','611000003')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','ARI'),('code','=','711000002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="ari_forex_gl"/>
         	<field name="company_id" ref="l10n_id.second_company"/>

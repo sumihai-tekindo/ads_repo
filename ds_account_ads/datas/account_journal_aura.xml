@@ -5,8 +5,8 @@
             <field name="name">AUR - Customer Invoices</field>
             <field name="code">AURCINV</field>
             <field name="type">sale</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_411000001"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_411000001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','411000001')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','411000001')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_cust_invoice"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -16,8 +16,8 @@
             <field name="name">AUR - Customer Invoices Refund</field>
             <field name="code">AURCINV-R</field>
             <field name="type">sale</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_411000002"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_411000002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','411000002')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','411000002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_cust_invoice_refund"/>
             <field name="company_id" ref="l10n_id.third_company"/>
@@ -29,8 +29,8 @@
             <field name="name">AUR - Supplier Invoices</field>
             <field name="code">AURSINV</field>
             <field name="type">purchase</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_515000015"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_515000015"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','515000015')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','515000015')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_supp_invoice"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -40,8 +40,8 @@
             <field name="name">AUR - Supplier Invoices Refund</field>
             <field name="code">AURSINV-R</field>
             <field name="type">purchase</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_515000015"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_515000015"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','515000015')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','515000015')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_supp_invoice_refund"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -64,8 +64,8 @@
             <field name="name">AUR - Bank1</field>
             <field name="code">AURBNK1</field>
             <field name="type">bank</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_111200001"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_111200001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','111200001')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','111200001')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_bank_1"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -74,8 +74,8 @@
             <field name="name">AUR - Bank2</field>
             <field name="code">AURBNK2</field>
             <field name="type">bank</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_111200002"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_111200002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','111200002')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','111200002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_bank_2"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -84,8 +84,8 @@
             <field name="name">AUR - Bank3</field>
             <field name="code">AURBNK3</field>
             <field name="type">bank</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_111200003"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_111200003"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','111200003')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','111200003')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_bank_3"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -94,8 +94,8 @@
             <field name="name">AUR - Petty Cash</field>
             <field name="code">AURCSH1</field>
             <field name="type">cash</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_111100001"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_111100001"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','111100001')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','111100001')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_cash_1"/>
             <field name="company_id" ref="l10n_id.third_company"/>
@@ -104,8 +104,8 @@
             <field name="name">AUR - Cash 1</field>
             <field name="code">AURCSH1</field>
             <field name="type">cash</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_111100002"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_111100002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','111100002')]"/>
+            <field name="default_debit_account_id" search="[('company_code','=','AUR'),('code','=','111100002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_cash_2"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
@@ -116,8 +116,8 @@
             <field name="name">AUR - Exchange Gain Loss</field>
             <field name="code">AURFGL</field>
             <field name="type">general</field>
-            <field name="default_credit_account_id" ref="l10n_id.third_company_611000003"/>
-            <field name="default_debit_account_id" ref="l10n_id.third_company_711000002"/>
+            <field name="default_credit_account_id" search="[('company_code','=','AUR'),('code','=','611000003')]"/>
+            <field name="default_debit_account_id"  search="[('company_code','=','AUR'),('code','=','711000002')]"/>
             <field name="refund_sequence" eval="True"/>
             <field name="sequence_id" ref="aur_forex_gl"/>
         	<field name="company_id" ref="l10n_id.third_company"/>
