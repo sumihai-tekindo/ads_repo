@@ -1,7 +1,7 @@
 {
     "name": "Equity Change Statement",
     "version": "1.0",
-    "depends": ["base","account","account_reports"],
+    "depends": ["base","account","account_reports","report_xls"],
     "author": "Dedi - Adsoft",
     "category": "Account",
     "description": """
