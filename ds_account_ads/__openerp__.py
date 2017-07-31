@@ -15,7 +15,7 @@
         'datas/account_journal_aroma.xml',
         'datas/account_journal_arisma.xml',
         'datas/account_journal_aura.xml',
-        'datas/product_category.xml',
+        #'datas/product_category.xml',
     ],
     'qweb': [
     ],
