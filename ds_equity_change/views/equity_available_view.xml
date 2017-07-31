@@ -1,0 +1,62 @@
+<openerp>
+	<data>
+		<record id="view_equity_available_tree" model="ir.ui.view">
+			<field name="name">equity.available.tree</field>
+			<field name="model">equity.available</field>
+			<field name="arch" type="xml">
+				<tree string="Equity Available" >
+					<field name="name" />
+					<field name="company_id" />
+					<field name="equity_account_id" />
+					<field name="prive_account" />
+					<field name="pl_account_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_equity_available_search" model="ir.ui.view">
+			<field name="name">equity.available.search</field>
+			<field name="model">equity.available</field>
+			<field name="arch" type="xml">
+				<search string="Equity Available">
+					<field name="name" />
+					<field name="company_id" />
+					<field name="equity_account_id" />
+					<field name="prive_account" />
+					<field name="pl_account_id" />
+				</search>
+			</field>
+		</record>
+		
+		<record id="view_equity_available_form" model="ir.ui.view">
+			<field name="name">equity.available.form</field>
+			<field name="model">equity.available</field>
+			<field name="arch" type="xml">
+				<form string="Equity Available" version="7.0">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="company_id" />
+								<field name="equity_account_id" />
+								<field name="prive_account" />
+								<field name="pl_account_id" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_equity_available" model="ir.actions.act_window">
+			<field name="name">Equity Available</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">equity.available</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_equity_available_search"/>
+		</record>
+        
+		<menuitem action="action_equity_available" id="menu_equity_available" parent="account.account_management_menu" sequence="2" string="Equity Available"/>
+	</data>
+</openerp>

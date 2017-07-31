@@ -1,0 +1,45 @@
+<openerp>
+	<data>
+		<record id="view_equity_change_wizard_form" model="ir.ui.view">
+			<field name="name">equity.change.wizard.form</field>
+			<field name="model">equity.change.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Equity Change Statement" version="7.0">
+					<sheet>
+						<group>
+							<group>
+								<field name="date_start" />
+								<field name="date_end" />
+								<field name="company_id" />
+							</group>
+						</group>
+						<footer>
+							<button icon="gtk-print" name="print_report" string="Print" type="object" class="oe_highlight" context="{'xls':1}"/> or 
+							<button string="Cancel" class="oe_link" special="cancel"/>
+						</footer>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_equity_change_wizard" model="ir.actions.act_window">
+			<field name="name">Equity Change Statement</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">equity.change.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+        
+		<menuitem action="action_equity_change_wizard" id="menu_equity_change_wizard" parent="account_reports.account_reports_business_statements_menu" sequence="2" string="Equity Change Statement"/>
+
+		<record id="action_equity_change_xls" model="ir.actions.report.xml">
+			<field name="name">Equity Change Statement</field>
+			<field name="model">equity.available</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">equity.change.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>	
+	</data>
+</openerp>
