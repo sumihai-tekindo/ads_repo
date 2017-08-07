@@ -1,0 +1,64 @@
+<openerp>
+	<data>
+		<record id="view_commission_report_wizard_form" model="ir.ui.view">
+			<field name="name">commission.report.wizard.form</field>
+			<field name="model">commission.report.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Commission Report" version="7.0">
+					<sheet>
+						<group>
+							<group>
+								<field name="date_start" />
+								<field name="date_end" />
+								<field name="company_id" />
+								<field name="sale_type" />
+							</group>
+						</group>
+						<footer>
+							<button icon="gtk-print" name="print_report" string="Print" type="object" class="oe_highlight" context="{'xls':1}"/> or 
+							<button string="Cancel" class="oe_link" special="cancel"/>
+						</footer>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_view_commission_report_wizard_form" model="ir.actions.act_window">
+			<field name="name">Commission Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">commission.report.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+        
+		<menuitem action="action_view_commission_report_wizard_form" id="menu_action_view_commission_report_wizard_form" parent="account_reports.account_reports_business_statements_menu" sequence="2" string="Commission Report"/>
+
+
+
+		<record id="action_sale_commission_online_xls" model="ir.actions.report.xml">
+			<field name="name">Report Komisi Online</field>
+			<field name="model">commission.compute.line.detail</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">sale.commission.online.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		<record id="action_sale_commission_offline_xls" model="ir.actions.report.xml">
+			<field name="name">Report Komisi Offline</field>
+			<field name="model">commission.compute.line.detail</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">sale.commission.offline.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+		<record id="action_sale_commission_summary_xls" model="ir.actions.report.xml">
+			<field name="name">Report Komisi Summary</field>
+			<field name="model">commission.compute.line.detail</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="report_name">sale.commission.summary.xls</field>
+			<field name="report_type">xls</field>
+			<field name="auto" eval="False"/>
+		</record>
+	</data>
+</openerp>

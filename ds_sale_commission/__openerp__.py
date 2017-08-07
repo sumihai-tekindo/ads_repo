@@ -19,6 +19,7 @@
 	'data': [
 		'views/commission_rule_view.xml',
 		'views/commission_compute.xml',
+		'views/commission_report_wizard_view.xml',
 	],
 	'installable': True,
 	'auto_install': False,
