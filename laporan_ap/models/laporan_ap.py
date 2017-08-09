@@ -1,17 +1,18 @@
+import time
 from openerp import models, fields, api, _
 
 class laporan_ap(models.TransientModel):
     _name="laporan.ap"
     
-    start_date = fields.Date(string="Start Date", required=True)
-    end_date = fields.Date(string="End Date", required=True)
+    start_date = fields.Date(string="Start Date", required=True, default=time.strftime('%Y-%m-01'))
+    end_date = fields.Date(string="End Date", required=True,default=time.strftime('%Y-%m-%d'))
     type = fields.Selection([('piutang','Piutang(AR)'),
                                     ('hutang','Hutang(AP)')],
-                            string="Report Type",required=True)
+                            string="Report Type",required=True,default='piutang')
     info = fields.Selection([('partner','Per Partner'),
                                     ('summary','Summary')],
-                                   string="Report Info",required=True)
-    company_id = fields.Many2one('res.company','Company',required=True)
+                                   string="Report Info",required=True,default='partner')
+    company_id = fields.Many2one('res.company','Company',required=True, default=lambda self: self.env.user.company_id)
     
     @api.multi
     def print_report(self,):

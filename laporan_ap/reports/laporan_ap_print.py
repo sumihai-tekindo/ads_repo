@@ -6,6 +6,7 @@ from openerp.addons.report_xls.report_xls import report_xls
 # from openerp.addons.report_xls.utils import rowcol_to_cell, _render
 
 import time
+from openerp.exceptions import Warning
 from openerp.report import report_sxw
 from openerp.tools.translate import translate
 import logging
@@ -78,6 +79,8 @@ class laporan_ap_xls(report_xls):
         bold_border_all                 = xlwt.easyxf('font: height 180, name Calibri, colour_index black, bold on; align: wrap on, vert centre, horiz center;pattern: pattern solid, fore_color gray25; border:top thin, bottom thin, left thin, right thin')
         
 
+        if not grouping:
+            raise Warning(_('Record\'s not found  between Start Date: %s and End Date: %s. ') % (data['start_date'], data['end_date']))
         for group in grouping.keys():
             ws = wb.add_sheet(group.name)
             ws.panes_frozen = True

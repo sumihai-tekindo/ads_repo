@@ -6,6 +6,7 @@ from openerp.addons.report_xls.report_xls import report_xls
 # from openerp.addons.report_xls.utils import rowcol_to_cell, _render
 
 import time
+from openerp.exceptions import Warning
 from openerp.report import report_sxw
 from openerp.tools.translate import translate
 import logging
@@ -87,6 +88,8 @@ class summary_ar_xls(report_xls):
         
         
         
+        if not dummy_total:
+            raise Warning(_('Record\'s not found  between Start Date: %s and End Date: %s. ') % (data['start_date'], data['end_date']))
         ws = wb.add_sheet("Summary AR")
         ws.panes_frozen = True
         ws.remove_splits = True

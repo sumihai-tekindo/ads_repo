@@ -10,7 +10,10 @@
     'author': 'Andrean Wijaya',
     'website': '-',
     'description': """This modules provide Laporan AP/AR""",
-    'depends': ['base',"account"],
+    'depends': [
+        'account',
+        'report_xls',
+    ],
     'data': [
         'views/laporan_ap_view.xml',
         'reports/laporan_ap.xml',
