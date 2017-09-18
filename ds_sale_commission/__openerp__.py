@@ -15,7 +15,7 @@
     This module compute sales commission for ADS
 """,
 	'website': 'http://dedisinaga.blogspot.com',
-	'depends': ['base','account','sale'],
+	'depends': ['base','account','sale','report_xls'],
 	'data': [
 		'views/commission_rule_view.xml',
 		'views/commission_compute.xml',

@@ -58,7 +58,10 @@ class pos_order_line(osv.osv):
 			if fiscal_position_id:
 				taxes = fiscal_position_id.map_tax(taxes)
 
-			price = (((line.price_unit * (1 - (line.discount or 0.0) / 100.0) )*line.qty)-line.discount_amt)/line.qty
+			if line.qty==0 or line.qty==0.0:
+				price=0.0
+			else:
+				price = (((line.price_unit * (1 - (line.discount or 0.0) / 100.0) )*line.qty)-line.discount_amt)/line.qty
 			line.price_subtotal = line.price_subtotal_incl = price * line.qty
 			if taxes:
 
@@ -83,7 +86,10 @@ class pos_order(osv.osv):
 		taxes = line.tax_ids.filtered(lambda t: t.company_id.id == line.order_id.company_id.id)
 		if fiscal_position_id:
 			taxes = fiscal_position_id.map_tax(taxes)
-		price = (((line.price_unit * (1 - (line.discount or 0.0) / 100.0))*line.qty)-line.discount_amt)/line.qty
+		if line.qty==0 or line.qty==0.0:
+			price=0.0
+		else:
+			price = (((line.price_unit * (1 - (line.discount or 0.0) / 100.0))*line.qty)-line.discount_amt)/line.qty
 		cur = line.order_id.pricelist_id.currency_id
 		taxes = taxes.compute_all(price, cur, line.qty, product=line.product_id, partner=line.order_id.partner_id or False)['taxes']
 		val = 0.0
