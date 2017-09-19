@@ -36,23 +36,44 @@ class pos_config(osv.osv):
 		'sales_ids': fields.many2many('res.users','pos_config_sales_rel','pos_config_id','user_id',"Salesman in PoS")
 	}
 
+	# def create(self, cr, uid, values, context=None):
+	# 	ir_sequence = self.pool.get('ir.sequence')
+	# 	# force sequence_id field to new pos.order sequence
+	# 	res = super(pos_config, self).create(cr, uid, values, context=context)
+	# 	if res:
+	# 		if values.get('sequence_id',False):
+	# 			print "--------------",values
+	# 			self.write(cr,uid,res,{'sequence_id':values.get('sequence_id',False)})
+	# 			return res
+	# 		else:
+	# 			pos_config_id = self.browse(cr,uid,res)
+	# 			r_seq_id = ir_sequence.create(cr, SUPERUSER_ID, {
+	# 				'name': 'POS Order Return %s' % values['name'],
+	# 				'padding': 6,
+	# 				'prefix': "%s/RINV/%%(y)s/"  %(pos_config_id.company_id.name[:3].upper()),
+	# 				'code': "pos.order.return",
+	# 				'company_id': values.get('company_id', False),
+	# 			}, context=context)
+	# 			pos_config_id.write({'return_sequence_id':  r_seq_id})
+	# 			sequence_id = pos_config_id.sequence_id.write(
+	# 					{
+	# 					'prefix': "%s/INV/%%(y)s/"  %(pos_config_id.company_id.name[:3].upper()),
+	# 					'padding':6,
+	# 					})
+	# 	return res
+
 	def create(self, cr, uid, values, context=None):
 		ir_sequence = self.pool.get('ir.sequence')
 		# force sequence_id field to new pos.order sequence
+		
 		res = super(pos_config, self).create(cr, uid, values, context=context)
-		if res:
-			pos_config_id = self.browse(cr,uid,res)
-			r_seq_id = ir_sequence.create(cr, SUPERUSER_ID, {
-				'name': 'POS Order Return %s' % values['name'],
-				'padding': 6,
-				'prefix': "%s/RINV/%%(y)s/"  %(pos_config_id.company_id.name[:3].upper()),
-				'code': "pos.order.return",
-				'company_id': values.get('company_id', False),
-			}, context=context)
-			pos_config_id.write({'return_sequence_id':  r_seq_id})
-			sequence_id = pos_config_id.sequence_id.write(
-					{
-					'prefix': "%s/INV/%%(y)s/"  %(pos_config_id.company_id.name[:3].upper()),
-					'padding':6,
-					})
+		print "--------------",res
+		sequence_id = ir_sequence.search(cr,uid,[('code','=','pos.order'),('company_id','=',values.get('company_id',1))],order="id asc",limit=1)
+		ret_sequence_id = ir_sequence.search(cr,uid,[('code','=','pos.order.return'),('company_id','=',values.get('company_id',1))],order="id asc",limit=1)
+		values['sequence_id']=sequence_id
+		values['return_sequence_id']=ret_sequence_id
+		pos_config_id = self.browse(cr,uid,res)
+		pos_config_id.write({
+				'sequence_id':sequence_id and sequence_id[0],
+				'return_sequence_id':ret_sequence_id and ret_sequence_id[0]})
 		return res

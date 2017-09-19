@@ -14,6 +14,9 @@
 			<field name="model">pos.config</field>
 			<field name="inherit_id" ref="point_of_sale.view_pos_config_form" />
 			<field name="arch" type="xml">
+				<field name="sequence_id" position="attributes">
+					<attribute name="readonly">0</attribute>
+				</field>
 				<field name="sequence_id" position="after">
 					<field name="return_sequence_id"/>
 				</field>
