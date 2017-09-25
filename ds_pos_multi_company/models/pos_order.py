@@ -256,11 +256,11 @@ class pos_order(osv.osv):
 				
 				self.pool.get('account.invoice').write(cr,SUPERUSER_ID,so_inv_ids,{'journal_id':journal_sale[0],'company_id':tc,
 					'account_id':company.partner_id.property_account_receivable_id.id})
-				print "=======journal=======>",company.partner_id.property_account_receivable_id.id
-				#release customer invoices
-				# for inv in so_inv_ids:
+				# print "=======journal=======>",company.partner_id.property_account_receivable_id.id
+				# release customer invoices
+				for inv in so_inv_ids:
 
-				# 	workflow.trg_validate(SUPERUSER_ID, 'account.invoice', inv, 'invoice_open', cr)
+					workflow.trg_validate(SUPERUSER_ID, 'account.invoice', inv, 'invoice_open', cr)
 
 
 				#create purchase order
@@ -324,9 +324,9 @@ class pos_order(osv.osv):
 				supp_inv_id = self.pool.get('account.invoice').create(cr,uid,supp_inv,context=ctx_supp_inv)
 				supp_inv_data = self.pool.get('account.invoice').browse(cr,uid,supp_inv_id)
 				supp_inv_data.purchase_order_change()
-				for inv in so_inv_ids:
+				# for inv in supp_inv_id:
 
-					workflow.trg_validate(SUPERUSER_ID, 'account.invoice', supp_inv_id, 'invoice_open', cr)
+				workflow.trg_validate(SUPERUSER_ID, 'account.invoice', supp_inv_id, 'invoice_open', cr)
 
 
 		return True
