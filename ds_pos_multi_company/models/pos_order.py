@@ -169,6 +169,7 @@ class pos_order(osv.osv):
 			pos_company = session.config_id.company_id
 			for tc in to_create:
 				company = self.pool.get('res.company').browse(cr,uid,tc)
+				# print "xxxxxxxxxxxxxxxxxxxxxx",tc
 
 				partner_id = company.partner_id.id
 				pricelist_id =session.config_id.pricelist_id
@@ -176,6 +177,7 @@ class pos_order(osv.osv):
 				for pl in pricelist_id.substitute_ids:
 					if pl.company_id.id==tc:
 						related_pricelist=pl.id
+
 				#create sale order
 				ctx_sale={'company_id':tc,'force_company':tc}
 				warehouse_id = self._default_sale_warehouse(cr,uid,context=ctx_sale)
@@ -216,14 +218,19 @@ class pos_order(osv.osv):
 					so_line.update({'price_unit':product_sub.price})
 
 				sale.update({'order_line':sale_order_line})
-				sale_id = self.pool.get('sale.order').create(cr,SUPERUSER_ID,sale)
 
-				self.pool.get('sale.order').write(cr,SUPERUSER_ID,sale_id,{'warehouse_id':warehouse_id[0]})
+				sale_id = self.pool.get('sale.order').create(cr,SUPERUSER_ID,sale)
+				sale_order = self.pool.get('sale.order').browse(cr,SUPERUSER_ID,sale_id,context=context)
+
+				sale_order.write({'warehouse_id':warehouse_id[0]})
 				#confirm sale order
+
+
 				self.pool.get('sale.order').action_confirm(cr,SUPERUSER_ID,sale_id,context=context)
+				sale_order = self.pool.get('sale.order').browse(cr,SUPERUSER_ID,sale_id,context=context)
 
 				#confirm delivery order only draft (newly created)
-				sale_order = self.pool.get('sale.order').browse(cr,SUPERUSER_ID,sale_id,context=context)
+				
 				pick_ids = sale_order.picking_ids
 
 				for pick_id in pick_ids:
@@ -244,15 +251,16 @@ class pos_order(osv.osv):
 
 				#create customer invoice
 				local_context = dict(context or {}, force_company=tc, company_id=tc)
-				so_inv_ids=self.pool.get('sale.order').action_invoice_create(cr,SUPERUSER_ID,sale_id,local_context)
+				so_inv_ids=self.pool.get('sale.order').action_invoice_create(cr,SUPERUSER_ID,sale_id,context=local_context)
 				journal_sale = self.pool.get('account.journal').search(cr,SUPERUSER_ID,[('company_id','=',tc),('type','=','sale')],limit=1,order="id asc")
 				
 				self.pool.get('account.invoice').write(cr,SUPERUSER_ID,so_inv_ids,{'journal_id':journal_sale[0],'company_id':tc,
 					'account_id':company.partner_id.property_account_receivable_id.id})
+				print "=======journal=======>",company.partner_id.property_account_receivable_id.id
 				#release customer invoices
-				for inv in so_inv_ids:
+				# for inv in so_inv_ids:
 
-					workflow.trg_validate(SUPERUSER_ID, 'account.invoice', inv, 'invoice_open', cr)
+				# 	workflow.trg_validate(SUPERUSER_ID, 'account.invoice', inv, 'invoice_open', cr)
 
 
 				#create purchase order

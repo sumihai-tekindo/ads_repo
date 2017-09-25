@@ -157,7 +157,7 @@ class product_pricelist(osv.osv):
 					else:
 
 						try:
-							print "xxxxxxxxxxxxxxxxxxxxxxxx",rule.python_formula
+							# print "xxxxxxxxxxxxxxxxxxxxxxxx",rule.python_formula
 							price=eval(rule.python_formula)
 						except:
 							price=price
