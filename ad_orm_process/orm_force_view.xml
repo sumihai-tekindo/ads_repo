@@ -24,7 +24,7 @@
 			<field name="name">orm.force.form</field>
 			<field name="model">orm.force</field>
 			<field name="arch" type="xml">
-				<form string="ORM Force" version="7.0">
+				<form string="ORM Force" version="9.0">
 					<header>
 						<button name="execute_orm" type="object" string="Execute ORM"/>
 					</header>
