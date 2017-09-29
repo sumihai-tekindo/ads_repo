@@ -207,12 +207,18 @@ class pos_order(osv.osv):
 					if product_sub.description_sale:
 						name += '\n' + product_sub.description_sale
 
+					try:
+						product_uom = so_line['product_id'].uom_po_id.id or so_line['product_id'].uom_id.id
+					except:
+						product_check = self.pool.get('product.product').browse(cr,uid,so_line['product_id'])
+						product_uom = product_check.uom_po_id.id or product_check.uom_id.id
+
 					sale_order_line.append((0,0,{
 						'product_id'		:product_sub.id,
 						'name'				:name,
 						'date_planned'		:order['creation_date'],
 						'product_uom_qty'		:so_line['product_qty'],
-						'product_uom'		:so_line['product_id'].uom_po_id.id or so_line['product_id'].uom_id.id,
+						'product_uom'		:product_uom,
 						'price_unit'		:product_sub.price
 						}))
 					so_line.update({'price_unit':product_sub.price})
@@ -276,17 +282,35 @@ class pos_order(osv.osv):
 				}
 				purchase_order_line = []
 				for po_line in to_create[tc]:
-					name = po_line['product_id'].name_get()[0][1]
-					if po_line['product_id'].description_sale:
-						name += '\n' + po_line['product_id'].description_sale
-					purchase_order_line.append((0,0,{
-						'product_id'		:po_line['product_id'].id,
-						'name'				:name,
-						'date_planned'		:order['creation_date'],
-						'product_qty'		:po_line['product_qty'],
-						'product_uom'		:po_line['product_id'].uom_po_id.id or po_line['product_id'].uom_id.id,
-						'price_unit'		:po_line['price_unit']
-						}))
+					try:
+						name = po_line['product_id'].name_get()[0][1]
+					except:
+						prod_po_check = self.pool.get('product.product').browse(cr,uid,po_line['product_id'])
+						name = prod_po_check.name_get()[0][1]
+					try:	
+						if po_line['product_id'].description_sale:
+							name += '\n' + po_line['product_id'].description_sale
+					except:
+						if prod_po_check.description_sale:
+							name += '\n' + prod_po_check.description_sale
+					try:
+						purchase_order_line.append((0,0,{
+							'product_id'		:po_line['product_id'].id,
+							'name'				:name,
+							'date_planned'		:order['creation_date'],
+							'product_qty'		:po_line['product_qty'],
+							'product_uom'		:po_line['product_id'].uom_po_id.id or po_line['product_id'].uom_id.id,
+							'price_unit'		:po_line['price_unit']
+							}))
+					except:
+						purchase_order_line.append((0,0,{
+							'product_id'		:prod_po_check.id,
+							'name'				:name,
+							'date_planned'		:order['creation_date'],
+							'product_qty'		:po_line['product_qty'],
+							'product_uom'		:prod_po_check.uom_po_id.id or prod_po_check.uom_id.id,
+							'price_unit'		:po_line['price_unit']
+							}))
 
 				purchase.update({'order_line':purchase_order_line})
 				po_id = self.pool.get('purchase.order').create(cr,SUPERUSER_ID,purchase)
