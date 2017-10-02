@@ -24,7 +24,10 @@ class AccountInvoice(models.Model):
 		tax_grouped = {}
 		for line in self.invoice_line_ids:
 			if line.invoice_id.type in ('out_invoice','out_refund'):
-				price_unit = (line.price_unit * (1 - (line.discount or 0.0) / 100.0))-(line.discount_amount/line.quantity)
+				if line.quantity==0 or line.quantity==0.0:
+					price_unit=0.0
+				else:
+					price_unit = (line.price_unit * (1 - (line.discount or 0.0) / 100.0))-(line.discount_amount/line.quantity)
 			else:
 				price_unit = (line.price_unit * (1 - (line.discount or 0.0) / 100.0))
 			taxes = line.invoice_line_tax_ids.compute_all(price_unit, self.currency_id, line.quantity, line.product_id, self.partner_id)['taxes']
