@@ -48,7 +48,10 @@ class AccountInvoiceLine(models.Model):
 	def _compute_price(self):
 		currency = self.invoice_id and self.invoice_id.currency_id or None
 		if self.invoice_id.type in ('out_invoice','out_refund'):
-			price = (self.price_unit * (1 - (self.discount or 0.0) / 100.0))-(self.discount_amount/self.quantity)
+			if self.quantity==0 or self.quantity==0.0:
+				price=0.0
+			else:
+				price = (self.price_unit * (1 - (self.discount or 0.0) / 100.0))-(self.discount_amount/self.quantity)
 		else:
 			price = (self.price_unit * (1 - (self.discount or 0.0) / 100.0))
 		taxes = False
