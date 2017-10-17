@@ -153,6 +153,7 @@ class pos_order(osv.osv):
 			session=self.pool.get('pos.session').browse(cr,uid,session_id)
 			to_create = {}
 			for line in order['lines']:
+				print "=======linexxxxxxxxxxxxxx========",line
 				if line[2]['company_substitute_id'] and int(line[2]['company_substitute_id'])!=session.config_id.company_id.id:
 					prod=self.pool.get('product.product').browse(cr,uid,line[2]['product_id'])
 					sub_id = False
@@ -160,16 +161,18 @@ class pos_order(osv.osv):
 					for sub in prod.substitute_ids:
 						if sub.company_id.id == int(line[2]['company_substitute_id']):
 							sub_id=sub
+					if not sub_id:
+						raise UserError(_('Configuration error!\nThere is no substitute products defined for product variant id %s - %s.')%(prod.id,prod.name_get()[0][2]))
 					if int(line[2]['company_substitute_id']) not in to_create.keys():
-						to_create.update({int(line[2]['company_substitute_id']):[{'product_id':prod,'substitute_id':sub_id,'product_qty':line[2]['qty']}]})
+						to_create.update({int(line[2]['company_substitute_id']):[{'product_id':prod,'substitute_id':sub_id,'product_qty':line[2]['qty'],'price_unit':line[2]['price_unit']}]})
 					else:
 						dummy = to_create.get(int(line[2]['company_substitute_id']),[])
-						dummy.append({'product_id':line[2]['product_id'],'substitute_id':sub_id,'product_qty':line[2]['qty']})
+						dummy.append({'product_id':line[2]['product_id'],'substitute_id':sub_id,'product_qty':line[2]['qty'],'price_unit':line[2]['price_unit']})
 						to_create.update({int(line[2]['company_substitute_id']):dummy})
 			pos_company = session.config_id.company_id
 			for tc in to_create:
 				company = self.pool.get('res.company').browse(cr,uid,tc)
-				# print "xxxxxxxxxxxxxxxxxxxxxx",tc
+
 
 				partner_id = company.partner_id.id
 				pricelist_id =session.config_id.pricelist_id
@@ -193,17 +196,25 @@ class pos_order(osv.osv):
 				sale_order_line = []
 				for so_line in to_create[tc]:
 
+					try:
+						so_line_product_uom_sub = so_line['substitute_id'].uom_id.id
+						substitute_product_id = so_line['substitute_id'].id
+					except:
+						prod_s_check = self.pool.get('product.product').browse(cr,uid,so_line['substitute_id'])
+						so_line_product_uom_sub = prod_s_check.uom_id.id
+						substitute_product_id = so_line['substitute_id']
 					product_context = {
 							'lang': pos_company.partner_id.lang,
 							'partner': pos_company.partner_id.id,
 							'quantity': so_line['product_qty'],
 							'date':order['creation_date'],
 							'pricelist':related_pricelist,
-							'uom_id':so_line['substitute_id'].uom_id.id,
+							'uom_id':so_line_product_uom_sub,
 							}
-					product_sub=self.pool.get('product.product').browse(cr,uid,so_line['substitute_id'].id,context=product_context)
-					
+					product_sub=self.pool.get('product.product').browse(cr,uid,substitute_product_id,context=product_context)
+
 					name = product_sub.name_get()[0][1]
+	
 					if product_sub.description_sale:
 						name += '\n' + product_sub.description_sale
 
@@ -219,21 +230,21 @@ class pos_order(osv.osv):
 						'date_planned'		:order['creation_date'],
 						'product_uom_qty'		:so_line['product_qty'],
 						'product_uom'		:product_uom,
-						'price_unit'		:product_sub.price
+						'price_unit'		:product_sub.price >1.0 or so_line['price_unit'],
 						}))
-					so_line.update({'price_unit':product_sub.price})
+					so_line.update({'price_unit':product_sub.price >1.0 or so_line['price_unit'] })
 
 				sale.update({'order_line':sale_order_line})
 
-				sale_id = self.pool.get('sale.order').create(cr,SUPERUSER_ID,sale)
-				sale_order = self.pool.get('sale.order').browse(cr,SUPERUSER_ID,sale_id,context=context)
+				sale_id = self.pool.get('sale.order').create(cr,uid,sale)
+				sale_order = self.pool.get('sale.order').browse(cr,uid,sale_id,context=context)
 
 				sale_order.write({'warehouse_id':warehouse_id[0]})
 				#confirm sale order
 
 
-				self.pool.get('sale.order').action_confirm(cr,SUPERUSER_ID,sale_id,context=context)
-				sale_order = self.pool.get('sale.order').browse(cr,SUPERUSER_ID,sale_id,context=context)
+				self.pool.get('sale.order').action_confirm(cr,uid,sale_id,context=context)
+				sale_order = self.pool.get('sale.order').browse(cr,uid,sale_id,context=context)
 
 				#confirm delivery order only draft (newly created)
 				
@@ -253,25 +264,30 @@ class pos_order(osv.osv):
 							pack.unlink()
 
 
-				doid = self.pool.get('stock.picking').do_transfer(cr,SUPERUSER_ID,[p.id for p in pick_ids])
+				doid = self.pool.get('stock.picking').do_transfer(cr,uid,[p.id for p in pick_ids])
 
 				#create customer invoice
 				local_context = dict(context or {}, force_company=tc, company_id=tc)
-				so_inv_ids=self.pool.get('sale.order').action_invoice_create(cr,SUPERUSER_ID,sale_id,context=local_context)
-				journal_sale = self.pool.get('account.journal').search(cr,SUPERUSER_ID,[('company_id','=',tc),('type','=','sale')],limit=1,order="id asc")
+				so_inv_ids=self.pool.get('sale.order').action_invoice_create(cr,uid,sale_id,context=local_context)
+				journal_sale = self.pool.get('account.journal').search(cr,uid,[('company_id','=',tc),('type','=','sale')],limit=1,order="id asc")
 				
-				self.pool.get('account.invoice').write(cr,SUPERUSER_ID,so_inv_ids,{'journal_id':journal_sale[0],'company_id':tc,
-					'account_id':company.partner_id.property_account_receivable_id.id})
-				# print "=======journal=======>",company.partner_id.property_account_receivable_id.id
+				partner_so = self.pool.get('res.partner').browse(cr,uid,company.partner_id.id,context=local_context)
+				acc_receivable_so = partner_so.property_account_receivable_id.id
+				print "xxxxxxxxxxxxxxxxxxxxxxxxsdfsdfsdf",acc_receivable_so
+				self.pool.get('account.invoice').write(cr,uid,so_inv_ids,{'journal_id':journal_sale[0],'company_id':tc,
+					'account_id':acc_receivable_so},context=local_context)
+
+				# print "=======journal=======>",company.name,acc_receivable_so
+				
 				# release customer invoices
 				for inv in so_inv_ids:
-
-					workflow.trg_validate(SUPERUSER_ID, 'account.invoice', inv, 'invoice_open', cr)
+					# print "inv-----------------",inv
+					workflow.trg_validate(uid, 'account.invoice', inv, 'invoice_open', cr)
 
 
 				#create purchase order
 				ctx_purchase={'company_id':pos_company.id}
-				picking_type_id = self._default_purchase_picking_type(cr,SUPERUSER_ID,context=ctx_purchase)
+				picking_type_id = self._default_purchase_picking_type(cr,uid,context=ctx_purchase)
 				purchase = {
 					'partner_id' 	: partner_id,
 					'date_order' 	: order['creation_date'],
@@ -313,11 +329,11 @@ class pos_order(osv.osv):
 							}))
 
 				purchase.update({'order_line':purchase_order_line})
-				po_id = self.pool.get('purchase.order').create(cr,SUPERUSER_ID,purchase)
+				po_id = self.pool.get('purchase.order').create(cr,uid,purchase)
 				#confirm purchase order
-				self.pool.get('purchase.order').button_confirm(cr,SUPERUSER_ID,po_id,context=context)
+				self.pool.get('purchase.order').button_confirm(cr,uid,po_id,context=context)
 				#confirm goods receipt/incoming shipment
-				purchase_order = self.pool.get('purchase.order').browse(cr,SUPERUSER_ID,po_id,context=context)
+				purchase_order = self.pool.get('purchase.order').browse(cr,uid,po_id,context=context)
 				incomings = purchase_order.picking_ids
 
 				for pick_id in incomings:
@@ -350,7 +366,7 @@ class pos_order(osv.osv):
 				supp_inv_data.purchase_order_change()
 				# for inv in supp_inv_id:
 
-				workflow.trg_validate(SUPERUSER_ID, 'account.invoice', supp_inv_id, 'invoice_open', cr)
+				workflow.trg_validate(uid, 'account.invoice', supp_inv_id, 'invoice_open', cr)
 
 
 		return True
