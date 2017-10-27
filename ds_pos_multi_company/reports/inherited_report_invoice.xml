@@ -19,6 +19,10 @@
             <strong>Sales Person:</strong>
             <p t-field="o.user_id"/>
         </div>
+        <div name="user_id" class="col-xs-5 col-xs-offset-7" t-if="o.user_admin_id">
+            <strong>User Admin :</strong>
+            <p t-field="o.user_admin_id"/>
+        </div>
     </xpath>
 
 </template>

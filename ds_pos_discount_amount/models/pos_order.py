@@ -232,6 +232,7 @@ class pos_order(osv.osv):
 				'currency_id': order.pricelist_id.currency_id.id, # considering partner's sale pricelist's currency
 				'company_id': company_id,
 				'user_id': (order.user_id and order.user_id.id) or (order.pos_admin and order.pos_admin.id),
+				'user_admin_id': (order.pos_admin and order.pos_admin.id) or (order.user_id and order.user_id.id),
 				'payment_journal_ids':False,
 			}
 			invoice = inv_ref.new(cr, uid, inv)

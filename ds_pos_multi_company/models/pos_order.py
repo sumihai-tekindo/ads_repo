@@ -86,8 +86,10 @@ class pos_order(osv.osv):
 				'currency_id': order.pricelist_id.currency_id.id, # considering partner's sale pricelist's currency
 				'company_id': company_id,
 				'user_id': (order.user_id and order.user_id.id) or (order.pos_admin and order.pos_admin.id),
+				'user_admin_id': (order.pos_admin and order.pos_admin.id) or (order.user_id and order.user_id.id),
 				'payment_journal_ids':False
 			}
+
 			invoice = inv_ref.new(cr, uid, inv)
 			invoice._onchange_partner_id()
 			invoice.fiscal_position_id = order.fiscal_position_id
@@ -153,7 +155,6 @@ class pos_order(osv.osv):
 			session=self.pool.get('pos.session').browse(cr,uid,session_id)
 			to_create = {}
 			for line in order['lines']:
-				print "=======linexxxxxxxxxxxxxx========",line
 				if line[2]['company_substitute_id'] and int(line[2]['company_substitute_id'])!=session.config_id.company_id.id:
 					prod=self.pool.get('product.product').browse(cr,uid,line[2]['product_id'])
 					sub_id = False
@@ -273,7 +274,7 @@ class pos_order(osv.osv):
 				
 				partner_so = self.pool.get('res.partner').browse(cr,uid,company.partner_id.id,context=local_context)
 				acc_receivable_so = partner_so.property_account_receivable_id.id
-				print "xxxxxxxxxxxxxxxxxxxxxxxxsdfsdfsdf",acc_receivable_so
+
 				self.pool.get('account.invoice').write(cr,uid,so_inv_ids,{'journal_id':journal_sale[0],'company_id':tc,
 					'account_id':acc_receivable_so},context=local_context)
 
