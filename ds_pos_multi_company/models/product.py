@@ -86,7 +86,14 @@ class product_product(osv.osv):
 		for prod in self.browse(cr,uid,ids,context=context):
 			txt = ""
 			for sub in prod.substitute_ids:
-				txt+="%s : %s\n"%(sub.company_id.name.upper()[:3],sub.qty_available)
+
+				try:
+					txt+="%s : %s\n"%(sub.company_id.name.upper()[:3],sub.qty_available)
+				except:
+					comp_id = sub.company_id.id
+					comp_data = self.pool.get('res.company').browse(cr,SUPERUSER_ID,comp_id)
+					txt+="%s : %s\n"%(comp_data.name.upper()[:3],sub.qty_available)
+					
 			res[prod.id]=txt
 		return res
 
